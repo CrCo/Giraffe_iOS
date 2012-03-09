@@ -32,6 +32,8 @@ CGPoint lastPoint;
         [self performSegueWithIdentifier:@"Login" sender:self];
     }
     
+    self.label.font = [UIFont fontWithName:@"appetite.otf" size:24.0];
+    
     self.wheel.layer.transform = CATransform3DMakeRotation(M_PI / 3.0, 0.0, 1.0, 0.0);     
  }
 
