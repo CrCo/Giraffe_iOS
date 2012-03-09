@@ -1,0 +1,376 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		37CE5F20150A8F44007FB05B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37CE5F1F150A8F44007FB05B /* UIKit.framework */; };
+		37CE5F22150A8F44007FB05B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37CE5F21150A8F44007FB05B /* Foundation.framework */; };
+		37CE5F24150A8F44007FB05B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37CE5F23150A8F44007FB05B /* CoreGraphics.framework */; };
+		37CE5F2A150A8F44007FB05B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 37CE5F28150A8F44007FB05B /* InfoPlist.strings */; };
+		37CE5F2C150A8F44007FB05B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CE5F2B150A8F44007FB05B /* main.m */; };
+		37CE5F30150A8F44007FB05B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CE5F2F150A8F44007FB05B /* AppDelegate.m */; };
+		37CE5F4F150A9550007FB05B /* appetite.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37CE5F3A150A9550007FB05B /* appetite.otf */; };
+		37CE5F50150A9550007FB05B /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 37CE5F3B150A9550007FB05B /* logo.png */; };
+		37CE5F51150A9550007FB05B /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 37CE5F3F150A9550007FB05B /* FBDialog.bundle */; };
+		37CE5F52150A9550007FB05B /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37CE5F45150A9550007FB05B /* libfacebook_ios_sdk.a */; };
+		37CE5F53150A9550007FB05B /* IconSample-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 37CE5F4C150A9550007FB05B /* IconSample-01.png */; };
+		37CE5F54150A9550007FB05B /* record.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 37CE5F4D150A9550007FB05B /* record.jpeg */; };
+		37CE5F55150A9550007FB05B /* rim.png in Resources */ = {isa = PBXBuildFile; fileRef = 37CE5F4E150A9550007FB05B /* rim.png */; };
+		37CE5F61150A956A007FB05B /* Giraffe.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CE5F58150A956A007FB05B /* Giraffe.m */; };
+		37CE5F62150A956A007FB05B /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CE5F5A150A956A007FB05B /* LoginController.m */; };
+		37CE5F63150A956A007FB05B /* MainScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CE5F5C150A956A007FB05B /* MainScreenController.m */; };
+		37CE5F64150A956A007FB05B /* NavBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 37CE5F5D150A956A007FB05B /* NavBar.png */; };
+		37CE5F65150A956A007FB05B /* RotatingWheel.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CE5F5F150A956A007FB05B /* RotatingWheel.m */; };
+		37CE5F67150A95D6007FB05B /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37CE5F66150A95D6007FB05B /* Accounts.framework */; };
+		37CE5F69150A95DC007FB05B /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37CE5F68150A95DC007FB05B /* Twitter.framework */; };
+		37CE5F6B150A9637007FB05B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37CE5F6A150A9637007FB05B /* QuartzCore.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		37CE5F1B150A8F44007FB05B /* Giraffe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Giraffe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		37CE5F1F150A8F44007FB05B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		37CE5F21150A8F44007FB05B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		37CE5F23150A8F44007FB05B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		37CE5F27150A8F44007FB05B /* Giraffe-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Giraffe-Info.plist"; sourceTree = "<group>"; };
+		37CE5F29150A8F44007FB05B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		37CE5F2B150A8F44007FB05B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		37CE5F2D150A8F44007FB05B /* Giraffe-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Giraffe-Prefix.pch"; sourceTree = "<group>"; };
+		37CE5F2E150A8F44007FB05B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		37CE5F2F150A8F44007FB05B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		37CE5F3A150A9550007FB05B /* appetite.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = appetite.otf; sourceTree = SOURCE_ROOT; };
+		37CE5F3B150A9550007FB05B /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = SOURCE_ROOT; };
+		37CE5F3D150A9550007FB05B /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
+		37CE5F3E150A9550007FB05B /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBConnect.h; sourceTree = "<group>"; };
+		37CE5F3F150A9550007FB05B /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBDialog.bundle; sourceTree = "<group>"; };
+		37CE5F40150A9550007FB05B /* FBDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBDialog.h; sourceTree = "<group>"; };
+		37CE5F41150A9550007FB05B /* FBFrictionlessRequestSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBFrictionlessRequestSettings.h; sourceTree = "<group>"; };
+		37CE5F42150A9550007FB05B /* FBLoginDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLoginDialog.h; sourceTree = "<group>"; };
+		37CE5F43150A9550007FB05B /* FBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBRequest.h; sourceTree = "<group>"; };
+		37CE5F44150A9550007FB05B /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		37CE5F45150A9550007FB05B /* libfacebook_ios_sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libfacebook_ios_sdk.a; sourceTree = "<group>"; };
+		37CE5F46150A9550007FB05B /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		37CE5F47150A9550007FB05B /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		37CE5F48150A9550007FB05B /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		37CE5F49150A9550007FB05B /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		37CE5F4A150A9550007FB05B /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		37CE5F4B150A9550007FB05B /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		37CE5F4C150A9550007FB05B /* IconSample-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconSample-01.png"; sourceTree = SOURCE_ROOT; };
+		37CE5F4D150A9550007FB05B /* record.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = record.jpeg; sourceTree = SOURCE_ROOT; };
+		37CE5F4E150A9550007FB05B /* rim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rim.png; sourceTree = SOURCE_ROOT; };
+		37CE5F57150A956A007FB05B /* Giraffe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Giraffe.h; sourceTree = "<group>"; };
+		37CE5F58150A956A007FB05B /* Giraffe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Giraffe.m; sourceTree = "<group>"; };
+		37CE5F59150A956A007FB05B /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
+		37CE5F5A150A956A007FB05B /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
+		37CE5F5B150A956A007FB05B /* MainScreenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainScreenController.h; sourceTree = "<group>"; };
+		37CE5F5C150A956A007FB05B /* MainScreenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainScreenController.m; sourceTree = "<group>"; };
+		37CE5F5D150A956A007FB05B /* NavBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NavBar.png; sourceTree = "<group>"; };
+		37CE5F5E150A956A007FB05B /* RotatingWheel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatingWheel.h; sourceTree = "<group>"; };
+		37CE5F5F150A956A007FB05B /* RotatingWheel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatingWheel.m; sourceTree = "<group>"; };
+		37CE5F60150A956A007FB05B /* StyleSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleSettings.h; sourceTree = "<group>"; };
+		37CE5F66150A95D6007FB05B /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		37CE5F68150A95DC007FB05B /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		37CE5F6A150A9637007FB05B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		37CE5F18150A8F44007FB05B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37CE5F6B150A9637007FB05B /* QuartzCore.framework in Frameworks */,
+				37CE5F69150A95DC007FB05B /* Twitter.framework in Frameworks */,
+				37CE5F67150A95D6007FB05B /* Accounts.framework in Frameworks */,
+				37CE5F20150A8F44007FB05B /* UIKit.framework in Frameworks */,
+				37CE5F22150A8F44007FB05B /* Foundation.framework in Frameworks */,
+				37CE5F24150A8F44007FB05B /* CoreGraphics.framework in Frameworks */,
+				37CE5F52150A9550007FB05B /* libfacebook_ios_sdk.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		37CE5F10150A8F44007FB05B = {
+			isa = PBXGroup;
+			children = (
+				37CE5F25150A8F44007FB05B /* Giraffe */,
+				37CE5F1E150A8F44007FB05B /* Frameworks */,
+				37CE5F1C150A8F44007FB05B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		37CE5F1C150A8F44007FB05B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				37CE5F1B150A8F44007FB05B /* Giraffe.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		37CE5F1E150A8F44007FB05B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				37CE5F6A150A9637007FB05B /* QuartzCore.framework */,
+				37CE5F68150A95DC007FB05B /* Twitter.framework */,
+				37CE5F66150A95D6007FB05B /* Accounts.framework */,
+				37CE5F1F150A8F44007FB05B /* UIKit.framework */,
+				37CE5F21150A8F44007FB05B /* Foundation.framework */,
+				37CE5F23150A8F44007FB05B /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		37CE5F25150A8F44007FB05B /* Giraffe */ = {
+			isa = PBXGroup;
+			children = (
+				37CE5F57150A956A007FB05B /* Giraffe.h */,
+				37CE5F58150A956A007FB05B /* Giraffe.m */,
+				37CE5F59150A956A007FB05B /* LoginController.h */,
+				37CE5F5A150A956A007FB05B /* LoginController.m */,
+				37CE5F5B150A956A007FB05B /* MainScreenController.h */,
+				37CE5F5C150A956A007FB05B /* MainScreenController.m */,
+				37CE5F5D150A956A007FB05B /* NavBar.png */,
+				37CE5F5E150A956A007FB05B /* RotatingWheel.h */,
+				37CE5F5F150A956A007FB05B /* RotatingWheel.m */,
+				37CE5F60150A956A007FB05B /* StyleSettings.h */,
+				37CE5F3A150A9550007FB05B /* appetite.otf */,
+				37CE5F3B150A9550007FB05B /* logo.png */,
+				37CE5F3C150A9550007FB05B /* facebook-ios-sdk */,
+				37CE5F4C150A9550007FB05B /* IconSample-01.png */,
+				37CE5F4D150A9550007FB05B /* record.jpeg */,
+				37CE5F4E150A9550007FB05B /* rim.png */,
+				37CE5F2E150A8F44007FB05B /* AppDelegate.h */,
+				37CE5F2F150A8F44007FB05B /* AppDelegate.m */,
+				37CE5F26150A8F44007FB05B /* Supporting Files */,
+			);
+			path = Giraffe;
+			sourceTree = "<group>";
+		};
+		37CE5F26150A8F44007FB05B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				37CE5F27150A8F44007FB05B /* Giraffe-Info.plist */,
+				37CE5F28150A8F44007FB05B /* InfoPlist.strings */,
+				37CE5F2B150A8F44007FB05B /* main.m */,
+				37CE5F2D150A8F44007FB05B /* Giraffe-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		37CE5F3C150A9550007FB05B /* facebook-ios-sdk */ = {
+			isa = PBXGroup;
+			children = (
+				37CE5F3D150A9550007FB05B /* Facebook.h */,
+				37CE5F3E150A9550007FB05B /* FBConnect.h */,
+				37CE5F3F150A9550007FB05B /* FBDialog.bundle */,
+				37CE5F40150A9550007FB05B /* FBDialog.h */,
+				37CE5F41150A9550007FB05B /* FBFrictionlessRequestSettings.h */,
+				37CE5F42150A9550007FB05B /* FBLoginDialog.h */,
+				37CE5F43150A9550007FB05B /* FBRequest.h */,
+				37CE5F44150A9550007FB05B /* JSON.h */,
+				37CE5F45150A9550007FB05B /* libfacebook_ios_sdk.a */,
+				37CE5F46150A9550007FB05B /* NSObject+SBJSON.h */,
+				37CE5F47150A9550007FB05B /* NSString+SBJSON.h */,
+				37CE5F48150A9550007FB05B /* SBJSON.h */,
+				37CE5F49150A9550007FB05B /* SBJsonBase.h */,
+				37CE5F4A150A9550007FB05B /* SBJsonParser.h */,
+				37CE5F4B150A9550007FB05B /* SBJsonWriter.h */,
+			);
+			path = "facebook-ios-sdk";
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		37CE5F1A150A8F44007FB05B /* Giraffe */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37CE5F33150A8F44007FB05B /* Build configuration list for PBXNativeTarget "Giraffe" */;
+			buildPhases = (
+				37CE5F17150A8F44007FB05B /* Sources */,
+				37CE5F18150A8F44007FB05B /* Frameworks */,
+				37CE5F19150A8F44007FB05B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Giraffe;
+			productName = Giraffe;
+			productReference = 37CE5F1B150A8F44007FB05B /* Giraffe.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		37CE5F12150A8F44007FB05B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 37CE5F15150A8F44007FB05B /* Build configuration list for PBXProject "Giraffe" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 37CE5F10150A8F44007FB05B;
+			productRefGroup = 37CE5F1C150A8F44007FB05B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				37CE5F1A150A8F44007FB05B /* Giraffe */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		37CE5F19150A8F44007FB05B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37CE5F2A150A8F44007FB05B /* InfoPlist.strings in Resources */,
+				37CE5F4F150A9550007FB05B /* appetite.otf in Resources */,
+				37CE5F50150A9550007FB05B /* logo.png in Resources */,
+				37CE5F51150A9550007FB05B /* FBDialog.bundle in Resources */,
+				37CE5F53150A9550007FB05B /* IconSample-01.png in Resources */,
+				37CE5F54150A9550007FB05B /* record.jpeg in Resources */,
+				37CE5F55150A9550007FB05B /* rim.png in Resources */,
+				37CE5F64150A956A007FB05B /* NavBar.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		37CE5F17150A8F44007FB05B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37CE5F2C150A8F44007FB05B /* main.m in Sources */,
+				37CE5F30150A8F44007FB05B /* AppDelegate.m in Sources */,
+				37CE5F61150A956A007FB05B /* Giraffe.m in Sources */,
+				37CE5F62150A956A007FB05B /* LoginController.m in Sources */,
+				37CE5F63150A956A007FB05B /* MainScreenController.m in Sources */,
+				37CE5F65150A956A007FB05B /* RotatingWheel.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		37CE5F28150A8F44007FB05B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				37CE5F29150A8F44007FB05B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		37CE5F31150A8F44007FB05B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		37CE5F32150A8F44007FB05B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		37CE5F34150A8F44007FB05B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Giraffe/Giraffe-Prefix.pch";
+				INFOPLIST_FILE = "Giraffe/Giraffe-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/facebook-ios-sdk\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		37CE5F35150A8F44007FB05B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Giraffe/Giraffe-Prefix.pch";
+				INFOPLIST_FILE = "Giraffe/Giraffe-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/facebook-ios-sdk\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		37CE5F15150A8F44007FB05B /* Build configuration list for PBXProject "Giraffe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37CE5F31150A8F44007FB05B /* Debug */,
+				37CE5F32150A8F44007FB05B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		37CE5F33150A8F44007FB05B /* Build configuration list for PBXNativeTarget "Giraffe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37CE5F34150A8F44007FB05B /* Debug */,
+				37CE5F35150A8F44007FB05B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 37CE5F12150A8F44007FB05B /* Project object */;
+}
