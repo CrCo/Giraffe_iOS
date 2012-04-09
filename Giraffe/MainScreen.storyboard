@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="PI6-wm-8D4">
+    <dependencies>
+        <deployment defaultVersion="1296" identifier="iOS"/>
+        <development defaultVersion="4200" identifier="xcode"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
+    </dependencies>
+    <scenes>
+        <!--Main Screen Controller-->
+        <scene sceneID="Ubh-rs-LWr">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BOQ-Qs-S7s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="EtN-JN-tnY" customClass="MainScreenController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xXY-VC-dEe">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="BackgroundwTopShadow.png" id="Lpo-mr-NjT">
+                                <rect key="frame" x="0.0" y="-44" width="320" height="460"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Scroll.png" id="IuQ-zP-YBz">
+                                <rect key="frame" x="10" y="2" width="300" height="367"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="66I-6c-qun">
+                                <rect key="frame" x="32" y="25" width="269" height="322"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="Cell" rowHeight="64" id="vhC-Mc-oF4" customClass="DateInfoCell">
+                                        <rect key="frame" x="0.0" y="22" width="269" height="64"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="269" height="63"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AY5-9j-Cpq">
+                                                    <rect key="frame" x="235" y="30" width="25" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" image="Heart_NotLiked.png">
+                                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="selected" image="Heart_Liked.png"/>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <view contentMode="scaleToFill" id="rHD-18-0QE">
+                                                    <rect key="frame" x="10" y="5" width="40" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="FYd-iF-mU1">
+                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Go to sugarbowl and get hammered on expensive beverages" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="PAQ-Ou-eqo">
+                                                    <rect key="frame" x="58" y="5" width="169" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="24h ago by" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="akb-w7-aO6">
+                                                    <rect key="frame" x="58" y="44" width="86" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="@lovr55" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="LRR-nY-6Xo">
+                                                    <rect key="frame" x="124" y="44" width="64" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" red="0.83529412749999998" green="0.17343833483806442" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="description" destination="PAQ-Ou-eqo" id="wE0-KI-IUf"/>
+                                            <outlet property="liked" destination="AY5-9j-Cpq" id="Y6W-V9-m5f"/>
+                                            <outlet property="timeLabel" destination="akb-w7-aO6" id="JX2-Ix-z3D"/>
+                                            <outlet property="userImage" destination="FYd-iF-mU1" id="8ty-AY-x7w"/>
+                                            <outlet property="username" destination="LRR-nY-6Xo" id="jis-DW-u3z"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="EtN-JN-tnY" id="UOM-jk-st1"/>
+                                    <outlet property="delegate" destination="EtN-JN-tnY" id="uzb-PR-AEb"/>
+                                </connections>
+                            </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" id="pnT-7E-Sfi">
+                                <rect key="frame" x="25" y="190" width="269" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                    </view>
+                    <navigationItem key="navigationItem" id="1N7-ul-Ogk">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="5bx-ov-vhd">
+                            <color key="tintColor" red="0.88235300779342651" green="0.76078438758850098" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="spinner" destination="pnT-7E-Sfi" id="UEO-UT-HKh"/>
+                        <outlet property="tableView" destination="66I-6c-qun" id="HyU-oL-wfA"/>
+                    </connections>
+                </viewController>
+                <tapGestureRecognizer id="nAd-rC-V06"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" maximumNumberOfTouches="1" id="yqV-ks-vRq"/>
+            </objects>
+            <point key="canvasLocation" x="600" y="66"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yeW-XL-9pz">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8uC-4h-q7R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="PI6-wm-8D4" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Jgw-FU-fMJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="EtN-JN-tnY" kind="relationship" relationship="rootViewController" id="cGS-Le-jXo"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="215" y="66"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="BackgroundwTopShadow.png" width="320" height="416"/>
+        <image name="Heart_Liked.png" width="25" height="25"/>
+        <image name="Heart_NotLiked.png" width="25" height="25"/>
+        <image name="Scroll.png" width="300" height="367"/>
+    </resources>
+    <classes>
+        <class className="DateInfoCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DateInfoCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="description" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="liked" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="userImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="username" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="GFBottomNavView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GFBottomNavView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="background" candidateClass="SliderView"/>
+            </relationships>
+        </class>
+        <class className="MainScreenController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainScreenController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="bottomNav" candidateClass="GFBottomNavView"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="SliderView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SliderView.h"/>
+            <relationships>
+                <relationship kind="action" name="didPan:"/>
+                <relationship kind="action" name="didTap:"/>
+            </relationships>
+        </class>
+    </classes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+</document>

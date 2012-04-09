@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "MainScreenController.h"
 #import "Giraffe.h"
+#import "SuperTabBarController.h"
+#import <Parse/Parse.h>
 
 @implementation AppDelegate
 
@@ -35,15 +37,26 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //Set our application ID for Parse.
+    [Parse setApplicationId:@"ogOmqw8RpCXhAqLe8RieMIIlYFbLQ9QwsgwEu59n" 
+                  clientKey:@"1XXIo0ZxVKQwC45Yj81yBWupCKESLmFOL0KYk6uj"];
+    
     // Override point for customization after application launch.
     
-    UINavigationController *root = (UINavigationController *)self.window.rootViewController;
-    [root.navigationBar setBackgroundImage:[UIImage imageNamed:@"NavBar"] forBarMetrics:UIBarMetricsDefault];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self.window setRootViewController:[[SuperTabBarController alloc] init]];
+    [self.window makeKeyAndVisible];
+    
+//    UINavigationController *root = (UINavigationController *)self.window.rootViewController;
+//    [root.navigationBar setBackgroundImage:[UIImage imageNamed:@"TopBarWShadow"] forBarMetrics:UIBarMetricsDefault];
+    
+    //    self.navigationController.navigationBar.topItem.title = 
+
         
-    if (!([self checkFacebookCredentials] || [self checkTwitterCredentials]))
-    {
-        ((MainScreenController *)root.topViewController).needsLogin = YES;
-    }
+//    if (!([self checkFacebookCredentials] || [self checkTwitterCredentials]))
+//    {
+//        ((MainScreenController *)root.topViewController).needsLogin = YES;
+//    }
     
     return YES;
 }
@@ -93,6 +106,20 @@
     [defaults setObject:[[Giraffe app].facebook accessToken] forKey:@"FBAccessTokenKey"];
     [defaults setObject:[[Giraffe app].facebook expirationDate] forKey:@"FBExpirationDateKey"];
     [defaults synchronize];
+    PFUser *user = [PFUser user];
+    user.username = @"lvr123";
+    user.password = @"my pass";
+    user.email = @"email@example.com";
+    
+    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            // Hooray! Let them use the app now.
+        } else {
+            NSLog(@"There was a tragic error: %@", [[error userInfo] objectForKey:@"error"]);
+            // Show the errorString somewhere and let the user try again.
+        }
+    }];
+
 }
 
 - (void)fbDidNotLogin:(BOOL)cancelled

@@ -9,43 +9,92 @@
 #import "MainScreenController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "RotatingWheel.h"
+#import <Parse/Parse.h>
+#import "GFNavView.h"
+#import "DateInfoCell.h"
 
 @interface MainScreenController ()
+
+@property (strong, nonatomic) NSArray *listOfDates;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UILabel *label;
-@property (weak, nonatomic) IBOutlet RotatingWheel *wheel;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
 @end
 
 @implementation MainScreenController
-@synthesize tableView, label, wheel=_wheel, needsLogin;
+@synthesize tableView;
+@synthesize spinner;
+
+@synthesize needsLogin, listOfDates=_listOfDates;
 
 CFTimeInterval lastTime;
 CGPoint lastPoint;
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self)
+    {
+        _listOfDates = [[NSArray alloc] init];
+        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Something" image:[UIImage imageNamed:@"PopularDates"] tag:1];
+    }   
+    return self;
+}
+
+- (void) search: (id) sender
+{
+    
+}
+
+- (void) updateDates
+{
+    self.tableView.hidden = YES;
+    [self.spinner startAnimating];
+    [[PFQuery queryWithClassName:@"Date"] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        self.listOfDates = objects;
+    }];
+}
+
+- (void)setListOfDates:(NSArray *)listOfDates
+{
+    _listOfDates = listOfDates;
+    [self.spinner stopAnimating];
+    self.tableView.hidden = NO;
+    [self.tableView reloadData];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self updateDates];
+
+    
+    UIFont *font = [UIFont fontWithName:@"appetite" size:36.0];
+    
+    UILabel *title = [[UILabel alloc] init];
+    title.backgroundColor = [UIColor clearColor];
+    title.font = font;
+    title.textColor = [UIColor whiteColor];
+    title.shadowOffset = CGSizeMake(3.0, 3.0);
+    title.shadowColor = [UIColor grayColor];
+    title.text = @"Giraffe";
+    [title sizeToFit];
+    
+    self.navigationItem.titleView = title;
     
     if (self.needsLogin)
     {
         [self performSegueWithIdentifier:@"Login" sender:self];
     }
-    
-    UIFont *font = [UIFont fontWithName:@"appetite" size:36.0];
-    
-    [self.label setFont:font];
-    
-    self.wheel.layer.transform = CATransform3DMakeRotation(M_PI / 3.0, 0.0, 1.0, 0.0);     
- }
+        
+    //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(search:)];
+}
 
 - (void)viewDidUnload
 {
     [self setTableView:nil];
-    [self setLabel:nil];
-    [self setWheel:nil];
+    [self setSpinner:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -53,33 +102,28 @@ CGPoint lastPoint;
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    CFTimeInterval currentTime = CACurrentMediaTime();
-    CGPoint currentPoint = scrollView.contentOffset;
-    
-    self.label.text = [NSString stringWithFormat:@"%f", (currentPoint.y - lastPoint.y) / (currentTime - lastTime) ];
-    [self.wheel rotate:currentPoint.y];
-    
-    lastTime = currentTime;
-    lastPoint = currentPoint;
-}
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
 }
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 30;
+    return [self.listOfDates count];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 64;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [aTableView dequeueReusableCellWithIdentifier:@"Cell"];
-    cell.textLabel.text = @"Generic";
+    PFObject *object = [self.listOfDates objectAtIndex:indexPath.row];
+    
+    DateInfoCell *cell = [aTableView dequeueReusableCellWithIdentifier:@"Cell"];
+    cell.username.text = ((PFUser *)[[object objectForKey:@"user"] fetchIfNeeded]).username;
+    cell.description.text = [object objectForKey:@"description"];
     return cell;
 }
 
