@@ -35,6 +35,13 @@
     [super viewDidLoad];
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BackgroundwTopShadow"]];
     self.ImageBorderView.layer.cornerRadius = 4.0;
+    
+    PFFile *currentImage = [[PFUser currentUser] objectForKey:@"image"];
+    
+    if (currentImage)
+    {
+        self.myPicture.image = [UIImage imageWithData:[currentImage getData]];
+    }
 }
 
 - (void)viewDidUnload
@@ -78,7 +85,12 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
 {
     self.myPicture.image = image;
-    PFFile *serializedImage = [PFFile fileWithData:UIImagePNGRepresentation(image)];
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(80, 80), NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, 80, 80)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();    
+    UIGraphicsEndImageContext();
+    
+    PFFile *serializedImage = [PFFile fileWithData:UIImagePNGRepresentation(newImage)];
     [serializedImage save];
     [[PFUser currentUser] setObject:serializedImage forKey:@"image"];
     [[PFUser currentUser] save];

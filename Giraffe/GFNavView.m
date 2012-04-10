@@ -63,8 +63,8 @@ BOOL _lastKnownStateOpen;
 - (void)setControllers:(NSArray *)controllers
 {    
     NSInteger yVal = 46 + (88 - 44) / 2;
-    NSInteger xSpace = self.bounds.size.width / controllers.count - 44; 
-    NSInteger xVal = xSpace;
+    NSInteger xSpace = self.bounds.size.width / controllers.count; 
+    NSInteger xVal = xSpace / controllers.count;
         
     for (UIViewController *controller in controllers)
     {
