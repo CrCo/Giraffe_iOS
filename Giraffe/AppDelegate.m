@@ -21,10 +21,12 @@
     [Giraffe app].facebook = [[Facebook alloc] initWithAppId:@"346588532046959" andDelegate:self];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults objectForKey:@"FBAccessTokenKey"] 
-        && [defaults objectForKey:@"FBExpirationDateKey"]) {
-        [Giraffe app].facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
-        [Giraffe app].facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
+    
+    NSString *token = [defaults objectForKey:@"FBAccessTokenKey"];
+    NSDate *date = [defaults objectForKey:@"FBExpirationDateKey"];
+    if (token && date) {
+        [Giraffe app].facebook.accessToken = token;
+        [Giraffe app].facebook.expirationDate = date;
     }
     
     return [[Giraffe app].facebook isSessionValid];
@@ -44,19 +46,30 @@
     // Override point for customization after application launch.
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [self.window setRootViewController:[[SuperTabBarController alloc] init]];
+    SuperTabBarController *root = [[SuperTabBarController alloc] init];
+    if (!([self checkFacebookCredentials] || [self checkTwitterCredentials]))
+    {
+        root.needsLogin = YES;
+    }
+    [self.window setRootViewController:root];
+
     [self.window makeKeyAndVisible];
     
-//    UINavigationController *root = (UINavigationController *)self.window.rootViewController;
-//    [root.navigationBar setBackgroundImage:[UIImage imageNamed:@"TopBarWShadow"] forBarMetrics:UIBarMetricsDefault];
+    [Giraffe kickstart];
     
-    //    self.navigationController.navigationBar.topItem.title = 
+    
+//    UIFont *font = [UIFont fontWithName:@"appetite" size:36.0];
+//    
+//    UILabel *title = [[UILabel alloc] init];
+//    title.backgroundColor = [UIColor clearColor];
+//    title.font = font;
+//    title.textColor = [UIColor whiteColor];
+//    title.shadowOffset = CGSizeMake(3.0, 3.0);
+//    title.shadowColor = [UIColor grayColor];
+//    title.text = @"Giraffe";
+//    [title sizeToFit];
 
-        
-//    if (!([self checkFacebookCredentials] || [self checkTwitterCredentials]))
-//    {
-//        ((MainScreenController *)root.topViewController).needsLogin = YES;
-//    }
+    
     
     return YES;
 }

@@ -11,4 +11,5 @@
 
 @interface SuperTabBarController : UIViewController <GFNavViewDelegate>
 
+@property (nonatomic) BOOL needsLogin;
 @end

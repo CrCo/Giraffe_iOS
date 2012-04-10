@@ -11,13 +11,14 @@
 @interface Giraffe()
 
 @property (nonatomic, strong) ACAccountType *accountTypeTwitter;
+@property (nonatomic, strong) GeoLocationHandler *handler;
 
 @end
 
 
 @implementation Giraffe
 
-@synthesize accountStore, accountTypeTwitter, facebook;
+@synthesize accountStore, accountTypeTwitter, facebook, location, handler, myPic;
 
 static Giraffe *app;
 
@@ -27,17 +28,26 @@ static Giraffe *app;
     {
         self.accountStore = [[ACAccountStore alloc] init];
         self.accountTypeTwitter = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+        self.handler = [[GeoLocationHandler alloc] init];
+        self.handler.delegate = self;
     }
     return self;
 }
 
+-(void)retrievedInfo:(CLPlacemark *)placemark
+{
+    self.location = placemark;
+    //This is the end of the handler's lifecycle
+}
+
 + (Giraffe *) app
 {
-    if (!app)
-    {
-        app = [[Giraffe alloc] init];
-    }
     return app;
+}
+
++ (void) kickstart
+{
+    app = [[Giraffe alloc] init];
 }
 
 - (ACAccount *)twitter

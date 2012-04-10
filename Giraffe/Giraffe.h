@@ -9,16 +9,23 @@
 #import <Foundation/Foundation.h>
 #import <Accounts/Accounts.h>
 #import "FBConnect.h"
+#import <CoreLocation/CoreLocation.h>
+#import "GeoLocationHandler.h"
 
-@interface Giraffe : NSObject
+@interface Giraffe : NSObject <GeoLocationHandlerDelegate>
 
 @property (nonatomic, strong) ACAccountStore *accountStore;
 
 @property (nonatomic, strong) Facebook *facebook;
 
+@property (nonatomic, strong) CLPlacemark *location;
+@property (nonatomic, strong) UIImage *myPic;
+
+
 - (ACAccount *) twitter;
 - (void) updateTwitter: (void (^)(BOOL)) completion;
 
 + (Giraffe *) app;
++ (void) kickstart;
 
 @end

@@ -7,16 +7,17 @@
 //
 
 #import "DateInfoCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation DateInfoCell
 
-@synthesize timeLabel, username, userImage, description, liked;
+@synthesize timeLabel, username, userImage, description, liked, imageBorderView;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
+        self.imageBorderView.layer.cornerRadius = 4.0;
     }
     return self;
 }

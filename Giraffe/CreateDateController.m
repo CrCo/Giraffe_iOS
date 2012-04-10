@@ -11,11 +11,14 @@
 #import "DollarsView.h"
 #import <Parse/Parse.h>
 #import "Giraffe.h"
+#import "ThemeItem.h"
 
 #define EXTRA_DISTANCE 10
 
+
 @interface CreateDateController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *localeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *characterCountLabel;
 @property (weak, nonatomic) IBOutlet UIView *themesPanel;
 @property (weak, nonatomic) IBOutlet UIScrollView *themesScroller;
@@ -23,18 +26,17 @@
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
 @property (weak, nonatomic) IBOutlet DollarsView *costView;
 @property (weak, nonatomic) IBOutlet UISlider *costSlider;
-@property (strong, nonatomic) NSArray *themeNames;
+@property (strong, nonatomic) NSArray *themes;
 
 @property (nonatomic) NSInteger themeSideLength;
 - (IBAction)createObj:(id)sender;
-
-- (IBAction)selectTheme:(id)sender;
 
 - (IBAction) changeCost:(id)sender;
 
 @end
 
 @implementation CreateDateController
+@synthesize localeLabel;
 @synthesize characterCountLabel;
 @synthesize themesPanel;
 @synthesize themesScroller;
@@ -43,13 +45,13 @@
 @synthesize descriptionTextView;
 @synthesize costView;
 @synthesize costSlider;
-@synthesize themeNames;
+@synthesize themes;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.themeNames = [NSArray arrayWithObjects:@"active", @"adventure", @"daytime", @"drinks", @"event", @"food", @"indoor", @"lowkey", @"night", @"outdoor", @"quick", @"romantic", nil];
+        self.themes = [NSArray arrayWithObjects:[ThemeItem itemWithTitle:@"Active"], [ThemeItem itemWithTitle:@"Adventure"], [ThemeItem itemWithTitle:@"Daytime"], [ThemeItem itemWithTitle:@"Drinks"], [ThemeItem itemWithTitle:@"Event"], [ThemeItem itemWithTitle:@"Food"], [ThemeItem itemWithTitle:@"Indoor"], [ThemeItem itemWithTitle:@"Low-Key"], [ThemeItem itemWithTitle:@"Night"], [ThemeItem itemWithTitle:@"Outdoor"], [ThemeItem itemWithTitle:@"Quick"], [ThemeItem itemWithTitle:@"Romantic"], nil];
         self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Create Date" image:[UIImage imageNamed:@"AddDate"] tag:3];
    }
     return self;
@@ -72,6 +74,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    for (int i = 0; i < [self.themes count]; i++)
+    {
+        UIButton *button = ((ThemeItem *)[self.themes objectAtIndex:i]).button;
+        button.frame = CGRectMake(i*60, 0, 60, 60);
+        [button addTarget:self action:@selector(selectTheme:) forControlEvents:UIControlEventTouchUpInside];
+        button.showsTouchWhenHighlighted = YES;
+        [self.themesScroller addSubview:button];
+    }
+    
+    self.localeLabel.text = [NSString stringWithFormat:@"%@, %@", [Giraffe app].location.locality, [Giraffe app].location.administrativeArea];
+    
     self.themesScroller.contentSize = CGSizeMake(720, 60);
     
     self.themeSideLength = CGRectGetHeight(self.themesPanel.frame);
@@ -79,6 +93,9 @@
     [self.themesPanel addSubview:self.nextThemeImageView];
     [self setCharaterCount: self.descriptionTextView.text.length];
     [self.costView updateView:self.costSlider.value];
+    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"TopBarWShadow"] forBarMetrics:UIBarMetricsDefault];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TopBarLogo"]];
 }
 
 - (void)viewDidUnload
@@ -89,6 +106,7 @@
     [self setDescriptionTextView:nil];
     [self setCostView:nil];
     [self setCostSlider:nil];
+    [self setLocaleLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -99,7 +117,7 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (IBAction)createObj:(id)sender {
+- (IBAction) createObj:(id)sender {
     PFObject *testObject = [PFObject objectWithClassName:@"Date"];
     [testObject setObject:[NSNumber numberWithFloat:self.costSlider.value] forKey:@"cost"];
     [testObject setObject:self.descriptionTextView.text forKey:@"description"];
@@ -110,20 +128,20 @@
         UIButton *view = [self.themesScroller.subviews objectAtIndex:i];
         if (view.selected)
         {
-            [allThemes addObject:[self.themeNames objectAtIndex:i]];
+            [allThemes addObject:((ThemeItem *)[self.themes objectAtIndex:i]).title];
         }
     }
     
     [testObject setObject:allThemes forKey:@"themes"];
-    PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:40.0 longitude:-30.0];
-    
-    [testObject setObject:point forKey:@"location"];
     PFUser *user = [PFUser currentUser];
     [testObject setObject:user forKey:@"user"];
+    [testObject setObject:[NSNumber numberWithInt:0] forKey:@"likes"];
+    [testObject setObject:self.localeLabel.text forKey:@"location"];
+    
     [testObject save];
 }
 
-- (IBAction)selectTheme:(UIButton *)sender
+- (void)selectTheme:(UIButton *)sender
 {
     if (sender.selected) 
     {

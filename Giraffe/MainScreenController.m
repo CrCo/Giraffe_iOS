@@ -12,6 +12,7 @@
 #import <Parse/Parse.h>
 #import "GFNavView.h"
 #import "DateInfoCell.h"
+#import "DetailedDateController.h"
 
 @interface MainScreenController ()
 
@@ -67,27 +68,9 @@ CGPoint lastPoint;
 {
     [super viewDidLoad];
     [self updateDates];
-
     
-    UIFont *font = [UIFont fontWithName:@"appetite" size:36.0];
-    
-    UILabel *title = [[UILabel alloc] init];
-    title.backgroundColor = [UIColor clearColor];
-    title.font = font;
-    title.textColor = [UIColor whiteColor];
-    title.shadowOffset = CGSizeMake(3.0, 3.0);
-    title.shadowColor = [UIColor grayColor];
-    title.text = @"Giraffe";
-    [title sizeToFit];
-    
-    self.navigationItem.titleView = title;
-    
-    if (self.needsLogin)
-    {
-        [self performSegueWithIdentifier:@"Login" sender:self];
-    }
-        
-    //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(search:)];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"TopBarWShadow"] forBarMetrics:UIBarMetricsDefault];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TopBarLogo"]];
 }
 
 - (void)viewDidUnload
@@ -125,6 +108,11 @@ CGPoint lastPoint;
     cell.username.text = ((PFUser *)[[object objectForKey:@"user"] fetchIfNeeded]).username;
     cell.description.text = [object objectForKey:@"description"];
     return cell;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    ((DetailedDateController *)segue.destinationViewController).date = [self.listOfDates objectAtIndex:self.tableView.indexPathForSelectedRow.row];
 }
 
 @end

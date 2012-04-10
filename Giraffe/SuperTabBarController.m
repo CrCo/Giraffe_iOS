@@ -20,7 +20,7 @@
 
 @implementation SuperTabBarController
 
-@synthesize currentController, navView;
+@synthesize currentController, navView, needsLogin;
 
 - (id)init
 {
@@ -32,6 +32,8 @@
         [self addChildViewController:main];
         UIViewController *profile = [[UIStoryboard storyboardWithName:@"Profile" bundle:nil] instantiateInitialViewController];
         [self addChildViewController:profile];
+        
+        self.wantsFullScreenLayout = YES;
     }
     return self;
 }
@@ -40,6 +42,11 @@
 {
     [super viewDidLoad];
     
+    if (self.needsLogin)
+    {
+        UIViewController *main = [[UIStoryboard storyboardWithName:@"MainScreen" bundle:nil] instantiateInitialViewController];
+    }
+        
     self.currentController= [self.childViewControllers objectAtIndex:1];
     [self.view addSubview:self.currentController.view];
     [self.currentController didMoveToParentViewController:self];
