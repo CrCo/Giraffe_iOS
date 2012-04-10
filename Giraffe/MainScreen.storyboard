@@ -55,7 +55,7 @@
                                                     <rect key="frame" x="10" y="5" width="40" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="FYd-iF-mU1">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="FYd-iF-mU1">
                                                             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </imageView>
@@ -143,7 +143,7 @@
                                 <rect key="frame" x="44" y="43" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="gIw-w9-XmB">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="gIw-w9-XmB">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>

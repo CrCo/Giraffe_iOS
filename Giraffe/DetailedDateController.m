@@ -58,9 +58,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    self.imageBorderView.layer.cornerRadius = 4.0;
     PFUser *user = [self.date objectForKey:@"user"];
+    [user fetchIfNeeded];
+    self.imageBorderView.layer.cornerRadius = 4.0;
+    
+    PFFile *serializedImage = [user objectForKey:@"image"];
+    if (image)
+    {
+        self.image.image = [UIImage imageWithData:[serializedImage getData]];
+    }
     self.usernameLabel.text = user.username;
     self.timeAgoLabel.text = [Giraffe timeAgo:self.date.createdAt];
     

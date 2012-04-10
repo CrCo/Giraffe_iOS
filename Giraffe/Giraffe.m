@@ -34,7 +34,7 @@ static Giraffe *app;
                 
         //Start our GeoLocation Handler
         self.handler = [[GeoLocationHandler alloc] init];
-        self.handler.delegate = self;
+        self.handler.delegate = self;        
     }
     return self;
 }

@@ -15,14 +15,23 @@
 
 @interface LoginController ()
 
+- (IBAction)doneEditing:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *UsernameLabel;
 - (IBAction)loginUsingFacebook:(id)sender;
 - (IBAction)loginUsingTwitter:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *twitterButton;
+@property (weak, nonatomic) IBOutlet UIButton *facebookButton;
+@property (weak, nonatomic) IBOutlet UITextField *usernameField;
 
 @property (nonatomic, strong) NSArray *allAccounts;
 
 @end
 
 @implementation LoginController
+@synthesize twitterButton;
+@synthesize facebookButton;
+@synthesize usernameField;
+@synthesize UsernameLabel;
 @synthesize delegate,allAccounts;
 
 - (id)initWithCoder:(NSCoder *)aDecoder{
@@ -36,10 +45,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.UsernameLabel.font = [UIFont fontWithName:@"appetite" size:24.0];
+    [self.usernameField becomeFirstResponder];
 }
 
 - (void)viewDidUnload
 {
+    [self setUsernameLabel:nil];
+    [self setTwitterButton:nil];
+    [self setFacebookButton:nil];
+    [self setUsernameField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -50,23 +65,29 @@
 }
 
 - (IBAction)loginUsingFacebook:(id)sender {
-    [PFFacebookUtils logInWithPermissions:[NSArray arrayWithObjects: nil] block:^(PFUser *user, NSError *error) {
-        if (error)
-        {
-            [[[UIAlertView alloc] initWithTitle:@"Hmmmm" message:[NSString stringWithFormat:@"Something went wrong: %@",error.localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
-        }
+    [PFFacebookUtils linkUser:[PFUser currentUser] permissions:[NSArray arrayWithObjects: nil] block:^(BOOL succeeded, NSError *error) {
+
         [self.delegate loginControllerFinish:self];
     }];
 }
 
 - (IBAction)loginUsingTwitter:(id)sender {
-    [PFTwitterUtils logInWithBlock:^(PFUser *user, NSError *error) {
-        if (error)
-        {
-            [[[UIAlertView alloc] initWithTitle:@"Hmmmm" message:[NSString stringWithFormat:@"Something went wrong: %@",error.localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
-        }
+    [PFTwitterUtils linkUser:[PFUser currentUser] block:^(BOOL succeeded, NSError *error) {
         [self.delegate loginControllerFinish:self];
     }];
 }
 
+- (IBAction)doneEditing:(id)sender {
+    //We always want a user to exist
+    PFUser *newUser = [PFUser user];
+
+    newUser.username = self.usernameField.text;
+    newUser.password = @"2(*^(%#HJSHFIUHOGT(&#O*GK3453563";
+    NSError *err = nil;
+    [newUser signUp: &err];
+    if (err)
+    {
+        [[[UIAlertView alloc] initWithTitle:@"Problem" message:[NSString stringWithFormat: @"Error: %@", err.localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+    }
+}
 @end

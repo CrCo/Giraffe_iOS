@@ -78,6 +78,10 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
 {
     self.myPicture.image = image;
+    PFFile *serializedImage = [PFFile fileWithData:UIImagePNGRepresentation(image)];
+    [serializedImage save];
+    [[PFUser currentUser] setObject:serializedImage forKey:@"image"];
+    [[PFUser currentUser] save];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

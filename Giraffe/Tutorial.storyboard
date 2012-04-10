@@ -74,7 +74,7 @@
                                 <gestureRecognizers/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ffI-CI-5WA">
-                                <rect key="frame" x="43" y="213" width="235" height="50"/>
+                                <rect key="frame" x="34" y="311" width="253" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="FacebookLogin.png">
@@ -89,7 +89,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bNh-Lw-2IZ">
-                                <rect key="frame" x="43" y="297" width="235" height="50"/>
+                                <rect key="frame" x="34" y="246" width="253" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="TwitterLogin.png">
@@ -103,10 +103,32 @@
                                     <action selector="loginUsingTwitter:" destination="409-f6-GHx" eventType="touchUpInside" id="uqI-Ff-Gxi"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="29" id="xjf-3j-29F">
+                                <rect key="frame" x="105" y="200" width="202" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <action selector="doneEditing:" destination="409-f6-GHx" eventType="editingDidEndOnExit" id="qJ3-Kn-SxV"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="dcN-WO-zQ9">
+                                <rect key="frame" x="20" y="205" width="77" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Dut-Ct-Nm1"/>
+                    <connections>
+                        <outlet property="UsernameLabel" destination="dcN-WO-zQ9" id="jeJ-D2-hxs"/>
+                        <outlet property="facebookButton" destination="ffI-CI-5WA" id="ofy-4Y-UyG"/>
+                        <outlet property="twitterButton" destination="bNh-Lw-2IZ" id="g3V-SQ-cPe"/>
+                        <outlet property="usernameField" destination="xjf-3j-29F" id="ulB-ra-zw8"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1002" y="48"/>
@@ -140,8 +162,13 @@
         <class className="LoginController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginController.h"/>
             <relationships>
+                <relationship kind="action" name="doneEditing:"/>
                 <relationship kind="action" name="loginUsingFacebook:"/>
                 <relationship kind="action" name="loginUsingTwitter:"/>
+                <relationship kind="outlet" name="UsernameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="facebookButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="twitterButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="usernameField" candidateClass="UITextField"/>
             </relationships>
         </class>
         <class className="TutorialViewController" superclassName="UIViewController">

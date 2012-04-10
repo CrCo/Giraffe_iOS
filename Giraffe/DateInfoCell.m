@@ -46,12 +46,18 @@
 - (void)setDate:(PFObject *)aDate
 {
     _date = aDate;
-    self.username.text = ((PFUser *)[[aDate objectForKey:@"user"] fetchIfNeeded]).username;
+    PFUser * user = [aDate objectForKey:@"user"];
+    [user fetchIfNeeded];
+    
+    self.username.text = user.username;
     self.description.text = [aDate objectForKey:@"description"];
     self.timeLabel.text = [Giraffe timeAgo:aDate.createdAt];
-
+    
+    PFFile *serializedImage = [user objectForKey:@"image"];
+    if (serializedImage)
+    {
+        self.userImage.image = [UIImage imageWithData:[serializedImage getData]];
+    }
 }
-
-
 
 @end

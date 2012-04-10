@@ -83,7 +83,7 @@ CGPoint lastPoint;
     if (![PFUser currentUser])
     {
         UIViewController *tutorial = [[UIStoryboard storyboardWithName:@"Tutorial" bundle:nil] instantiateInitialViewController];
-        [self presentViewController:tutorial animated:YES completion:nil];
+        [self presentViewController:tutorial animated:NO completion:nil];
     }
 }
 
