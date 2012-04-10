@@ -114,7 +114,6 @@
 		37CE5F4F150A9550007FB05B /* appetite.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37CE5F3A150A9550007FB05B /* appetite.otf */; };
 		37CE5F51150A9550007FB05B /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 37CE5F3F150A9550007FB05B /* FBDialog.bundle */; };
 		37CE5F52150A9550007FB05B /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37CE5F45150A9550007FB05B /* libfacebook_ios_sdk.a */; };
-		37CE5F54150A9550007FB05B /* record.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 37CE5F4D150A9550007FB05B /* record.jpeg */; };
 		37CE5F61150A956A007FB05B /* Giraffe.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CE5F58150A956A007FB05B /* Giraffe.m */; };
 		37CE5F62150A956A007FB05B /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CE5F5A150A956A007FB05B /* LoginController.m */; };
 		37CE5F63150A956A007FB05B /* MainScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CE5F5C150A956A007FB05B /* MainScreenController.m */; };
@@ -293,7 +292,6 @@
 		37CE5F49150A9550007FB05B /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
 		37CE5F4A150A9550007FB05B /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
 		37CE5F4B150A9550007FB05B /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
-		37CE5F4D150A9550007FB05B /* record.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = record.jpeg; sourceTree = SOURCE_ROOT; };
 		37CE5F57150A956A007FB05B /* Giraffe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Giraffe.h; sourceTree = "<group>"; };
 		37CE5F58150A956A007FB05B /* Giraffe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Giraffe.m; sourceTree = "<group>"; };
 		37CE5F59150A956A007FB05B /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
@@ -545,7 +543,6 @@
 				37F3A72F1533CEAA000A96A5 /* ThemeItem.h */,
 				37F3A7301533CEAA000A96A5 /* ThemeItem.m */,
 				37CE5F3C150A9550007FB05B /* facebook-ios-sdk */,
-				37CE5F4D150A9550007FB05B /* record.jpeg */,
 				37CE5F2E150A8F44007FB05B /* AppDelegate.h */,
 				37CE5F2F150A8F44007FB05B /* AppDelegate.m */,
 				37CE5F26150A8F44007FB05B /* Supporting Files */,
@@ -715,7 +712,6 @@
 				37CE5F2A150A8F44007FB05B /* InfoPlist.strings in Resources */,
 				37CE5F4F150A9550007FB05B /* appetite.otf in Resources */,
 				37CE5F51150A9550007FB05B /* FBDialog.bundle in Resources */,
-				37CE5F54150A9550007FB05B /* record.jpeg in Resources */,
 				37C7C355150AAE32008AD657 /* MainScreen.storyboard in Resources */,
 				37FB6EE415142FD40012AF79 /* AddDate@2x.png in Resources */,
 				37FB6EE515142FD40012AF79 /* AddDate.png in Resources */,
