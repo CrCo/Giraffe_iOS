@@ -34,7 +34,6 @@
 {
     [super viewDidLoad];
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BackgroundwTopShadow"]];
-    self.myPicture.image = [Giraffe app].myPic;
     self.ImageBorderView.layer.cornerRadius = 4.0;
 }
 
@@ -78,7 +77,6 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
 {
-    [Giraffe app].myPic = image;
     self.myPicture.image = image;
     [self dismissViewControllerAnimated:YES completion:nil];
 }

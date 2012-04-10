@@ -172,7 +172,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="gDS-ab-d8h">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="bookmarks" id="xM4-fb-1l7">
+                        <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="xM4-fb-1l7">
                             <color key="tintColor" red="0.90980398650000005" green="0.72941178080000002" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                             <connections>
                                 <segue destination="2Tx-SJ-6Cl" kind="push" id="sp9-CC-gWv"/>

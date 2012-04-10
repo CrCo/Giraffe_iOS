@@ -11,6 +11,7 @@
 #import <Parse/Parse.h>
 #import <QuartzCore/QuartzCore.h>
 #import "ThemeItem.h"
+#import "Giraffe.h"
 
 @interface DetailedDateController ()
 @property (weak, nonatomic) IBOutlet UIView *imageBorderView;
@@ -22,10 +23,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *locationTitleLabel;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionText;
 @property (weak, nonatomic) IBOutlet UILabel *likedInfoLabel;
-@property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (weak, nonatomic) IBOutlet DollarsView *costView;
 @property (weak, nonatomic) IBOutlet UIView *themeView;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+- (IBAction)toggleLike:(id)sender;
 
 @end
 
@@ -39,7 +40,6 @@
 @synthesize locationTitleLabel;
 @synthesize descriptionText;
 @synthesize likedInfoLabel;
-@synthesize likeButton;
 @synthesize costView;
 @synthesize themeView;
 @synthesize locationLabel;
@@ -54,45 +54,6 @@
     return self;
 }
 
-- (NSString *) timeAgo: (NSDate *) aDate
-{
-    // Get the system calendar
-    NSCalendar *sysCalendar = [NSCalendar currentCalendar];
-        
-    // Get conversion to months, days, hours, minutes
-    unsigned int unitFlags = NSSecondCalendarUnit| NSHourCalendarUnit | NSMinuteCalendarUnit | NSDayCalendarUnit | NSWeekCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit;
-    
-    NSDateComponents *components = [sysCalendar  components:unitFlags fromDate:aDate  toDate:[[NSDate alloc] init]  options:0];
-    
-    if (components.year > 0)
-    {
-        return [NSString stringWithFormat: @"%d years ago", components.year];
-    }
-    else if(components.month > 0)
-    {
-        return [NSString stringWithFormat: @"%d months ago", components.month];
-    }
-    else if(components.week > 0)
-    {
-        return [NSString stringWithFormat: @"%d weeks ago", components.week];
-    }
-    else if(components.day > 0)
-    {
-        return [NSString stringWithFormat: @"%dd ago", components.day];
-    }
-    else if(components.hour > 0)
-    {
-        return [NSString stringWithFormat: @"%dh ago", components.hour];
-    }
-    else if(components.hour > 0)
-    {
-        return [NSString stringWithFormat: @"%dm ago", components.minute];
-    }
-    else
-    {
-        return @"Mere seconds ago";
-    }
-}
 
 - (void)viewDidLoad
 {
@@ -101,7 +62,7 @@
     self.imageBorderView.layer.cornerRadius = 4.0;
     PFUser *user = [self.date objectForKey:@"user"];
     self.usernameLabel.text = user.username;
-    self.timeAgoLabel.text = [self timeAgo:self.date.createdAt];
+    self.timeAgoLabel.text = [Giraffe timeAgo:self.date.createdAt];
     
     UIFont *font = [UIFont fontWithName:@"appetite" size:30.0];
     self.themeTitleLabel.font = font;
@@ -137,7 +98,6 @@
     [self setLocationTitleLabel:nil];
     [self setDescriptionText:nil];
     [self setLikedInfoLabel:nil];
-    [self setLikeButton:nil];
     [self setCostView:nil];
     [self setThemeView:nil];
     [self setLocationLabel:nil];
@@ -150,4 +110,22 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (IBAction)toggleLike:(UIButton *)sender {
+    if (sender.selected)
+    {
+        [self.date incrementKey:@"likes" byAmount:[NSNumber numberWithInt:-1]];
+    }
+    else
+    {
+        [self.date incrementKey:@"likes"];
+    }
+    [self.date saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        NSInteger numberOfLikes = ((NSNumber *)[self.date objectForKey:@"likes"]).intValue;
+
+        self.likedInfoLabel.text = [NSString stringWithFormat: @"%d Likes", numberOfLikes];
+    }];
+    
+    
+    sender.selected = !sender.selected;
+}
 @end

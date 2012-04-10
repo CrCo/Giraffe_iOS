@@ -10,17 +10,20 @@
 #import "MainScreenController.h"
 #import "CreateDateController.h"
 #import "GFNavView.h"
+#import "TutorialViewController.h"
+#import "Giraffe.h"
 
 @interface SuperTabBarController ()
 
 @property (nonatomic, strong) UIViewController *currentController;
 @property (nonatomic, strong) GFNavView *navView;
+@property (nonatomic, strong) UIViewController *main;
 
 @end
 
 @implementation SuperTabBarController
 
-@synthesize currentController, navView, needsLogin;
+@synthesize currentController, navView, main;
 
 - (id)init
 {
@@ -28,25 +31,27 @@
     if (self) {
         UIViewController *make = [[UIStoryboard storyboardWithName:@"MakeDate" bundle:nil] instantiateInitialViewController];
         [self addChildViewController:make];
-        UIViewController *main = [[UIStoryboard storyboardWithName:@"MainScreen" bundle:nil] instantiateInitialViewController];
-        [self addChildViewController:main];
+        self.main = [[UIStoryboard storyboardWithName:@"MainScreen" bundle:nil] instantiateInitialViewController];
+        [self addChildViewController:self.main];
         UIViewController *profile = [[UIStoryboard storyboardWithName:@"Profile" bundle:nil] instantiateInitialViewController];
         [self addChildViewController:profile];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newDate:) name:GFCreatedDate object:nil];
         
         self.wantsFullScreenLayout = YES;
     }
     return self;
 }
 
+- (void) newDate:(id) sender
+{
+    [self didSelectForController:self.main];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    if (self.needsLogin)
-    {
-        UIViewController *main = [[UIStoryboard storyboardWithName:@"MainScreen" bundle:nil] instantiateInitialViewController];
-    }
-        
     self.currentController= [self.childViewControllers objectAtIndex:1];
     [self.view addSubview:self.currentController.view];
     [self.currentController didMoveToParentViewController:self];
@@ -56,10 +61,9 @@
     [self.navView setControllers: self.childViewControllers];
     [self.view addSubview:self.navView];
             
-	// Do any additional setup after loading the view.
 }
 
-- (void) navView:(GFNavView *)view didSelectForController :(UIViewController *)controller
+- (void) didSelectForController :(UIViewController *)controller
 {
     if (self.currentController != controller)
     {

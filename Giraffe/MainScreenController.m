@@ -13,6 +13,7 @@
 #import "GFNavView.h"
 #import "DateInfoCell.h"
 #import "DetailedDateController.h"
+#import "Giraffe.h"
 
 @interface MainScreenController ()
 
@@ -38,8 +39,15 @@ CGPoint lastPoint;
     {
         _listOfDates = [[NSArray alloc] init];
         self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Something" image:[UIImage imageNamed:@"PopularDates"] tag:1];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addDate:) name: GFCreatedDate object:nil];
     }   
     return self;
+}
+
+- (void) addDate: (id) sender
+{
+    [self updateDates];
 }
 
 - (void) search: (id) sender
@@ -71,6 +79,12 @@ CGPoint lastPoint;
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"TopBarWShadow"] forBarMetrics:UIBarMetricsDefault];
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TopBarLogo"]];
+    
+    if (![PFUser currentUser])
+    {
+        UIViewController *tutorial = [[UIStoryboard storyboardWithName:@"Tutorial" bundle:nil] instantiateInitialViewController];
+        [self presentViewController:tutorial animated:YES completion:nil];
+    }
 }
 
 - (void)viewDidUnload
@@ -105,8 +119,7 @@ CGPoint lastPoint;
     PFObject *object = [self.listOfDates objectAtIndex:indexPath.row];
     
     DateInfoCell *cell = [aTableView dequeueReusableCellWithIdentifier:@"Cell"];
-    cell.username.text = ((PFUser *)[[object objectForKey:@"user"] fetchIfNeeded]).username;
-    cell.description.text = [object objectForKey:@"description"];
+    cell.date = object;
     return cell;
 }
 

@@ -133,12 +133,17 @@
     }
     
     [testObject setObject:allThemes forKey:@"themes"];
-    PFUser *user = [PFUser currentUser];
-    [testObject setObject:user forKey:@"user"];
+    [testObject setObject:[PFUser currentUser] forKey:@"user"];
     [testObject setObject:[NSNumber numberWithInt:0] forKey:@"likes"];
     [testObject setObject:self.localeLabel.text forKey:@"location"];
     
-    [testObject save];
+    NSError *error = nil;
+    [testObject save: &error];
+    if (error)
+    {
+        [[[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"Error: %@", error.localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:GFCreatedDate object:testObject];
 }
 
 - (void)selectTheme:(UIButton *)sender

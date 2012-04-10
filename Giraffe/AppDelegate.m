@@ -15,61 +15,17 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
-
-- (BOOL) checkFacebookCredentials
-{
-    [Giraffe app].facebook = [[Facebook alloc] initWithAppId:@"346588532046959" andDelegate:self];
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    NSString *token = [defaults objectForKey:@"FBAccessTokenKey"];
-    NSDate *date = [defaults objectForKey:@"FBExpirationDateKey"];
-    if (token && date) {
-        [Giraffe app].facebook.accessToken = token;
-        [Giraffe app].facebook.expirationDate = date;
-    }
-    
-    return [[Giraffe app].facebook isSessionValid];
-}
-
-- (BOOL) checkTwitterCredentials
-{    
-    return [Giraffe app].twitter != nil;
-}
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //Set our application ID for Parse.
-    [Parse setApplicationId:@"ogOmqw8RpCXhAqLe8RieMIIlYFbLQ9QwsgwEu59n" 
-                  clientKey:@"1XXIo0ZxVKQwC45Yj81yBWupCKESLmFOL0KYk6uj"];
+    [Giraffe kickstart];
     
     // Override point for customization after application launch.
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     SuperTabBarController *root = [[SuperTabBarController alloc] init];
-    if (!([self checkFacebookCredentials] || [self checkTwitterCredentials]))
-    {
-        root.needsLogin = YES;
-    }
     [self.window setRootViewController:root];
 
     [self.window makeKeyAndVisible];
-    
-    [Giraffe kickstart];
-    
-    
-//    UIFont *font = [UIFont fontWithName:@"appetite" size:36.0];
-//    
-//    UILabel *title = [[UILabel alloc] init];
-//    title.backgroundColor = [UIColor clearColor];
-//    title.font = font;
-//    title.textColor = [UIColor whiteColor];
-//    title.shadowOffset = CGSizeMake(3.0, 3.0);
-//    title.shadowColor = [UIColor grayColor];
-//    title.text = @"Giraffe";
-//    [title sizeToFit];
-
-    
     
     return YES;
 }
@@ -101,59 +57,9 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-// Pre iOS 4.2 support
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    return [[Giraffe app].facebook handleOpenURL:url]; 
-}
-
-// For iOS 4.2+ support
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    return [[Giraffe app].facebook handleOpenURL:url]; 
-}
-        
-#pragma mark Facebook Delegate
-        
-- (void)fbDidLogin {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[[Giraffe app].facebook accessToken] forKey:@"FBAccessTokenKey"];
-    [defaults setObject:[[Giraffe app].facebook expirationDate] forKey:@"FBExpirationDateKey"];
-    [defaults synchronize];
-    PFUser *user = [PFUser user];
-    user.username = @"lvr123";
-    user.password = @"my pass";
-    user.email = @"email@example.com";
-    
-    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (!error) {
-            // Hooray! Let them use the app now.
-        } else {
-            NSLog(@"There was a tragic error: %@", [[error userInfo] objectForKey:@"error"]);
-            // Show the errorString somewhere and let the user try again.
-        }
-    }];
-
-}
-
-- (void)fbDidNotLogin:(BOOL)cancelled
-{
-    
-}
-
-- (void)fbDidExtendToken:(NSString*)accessToken
-               expiresAt:(NSDate*)expiresAt
-{
-    
-}
-
-- (void)fbDidLogout
-{
-    
-}
-
-- (void)fbSessionInvalidated
-{
-    
+    return [PFFacebookUtils handleOpenURL:url]; 
 }
 
 @end

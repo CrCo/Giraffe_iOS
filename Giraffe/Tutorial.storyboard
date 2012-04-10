@@ -31,10 +31,16 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="409-f6-GHx" kind="push" id="7Rx-5W-yt8"/>
+                                </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="b3U-D5-ORq">
                                 <rect key="frame" x="0.0" y="183" width="320" height="194"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="0As-G0-Kei" id="rR8-4M-RHh"/>
+                                </connections>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" id="dds-Lk-b78">
                                 <rect key="frame" x="20" y="368" width="280" height="36"/>
@@ -45,6 +51,10 @@
                         <gestureRecognizers/>
                     </view>
                     <navigationItem key="navigationItem" id="sUd-37-Zlr"/>
+                    <connections>
+                        <outlet property="pageControl" destination="dds-Lk-b78" id="6JC-Mx-jEX"/>
+                        <outlet property="scrollView" destination="b3U-D5-ORq" id="fzL-jO-H0m"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="626" y="48"/>
@@ -74,6 +84,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginUsingFacebook:" destination="409-f6-GHx" eventType="touchUpInside" id="1ds-aF-LyU"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bNh-Lw-2IZ">
                                 <rect key="frame" x="43" y="297" width="235" height="50"/>
@@ -86,10 +99,14 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginUsingTwitter:" destination="409-f6-GHx" eventType="touchUpInside" id="uqI-Ff-Gxi"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Dut-Ct-Nm1"/>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1002" y="48"/>
@@ -125,8 +142,6 @@
             <relationships>
                 <relationship kind="action" name="loginUsingFacebook:"/>
                 <relationship kind="action" name="loginUsingTwitter:"/>
-                <relationship kind="outlet" name="label" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="twButton" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="TutorialViewController" superclassName="UIViewController">

@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class LoginController;
+
+@protocol LoginControllerDelegate <NSObject>
+
+- (void) loginControllerFinish:(LoginController *) loginCntl;
+
+@end
+
+
 @interface LoginController : UIViewController
+
+
+@property (nonatomic, weak) id<LoginControllerDelegate> delegate;
 
 @end

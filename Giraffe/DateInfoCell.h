@@ -7,14 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface DateInfoCell : UITableViewCell
 
 @property (nonatomic, weak) IBOutlet UILabel *description;
 @property (nonatomic, weak) IBOutlet UIImageView *userImage;
 @property (nonatomic, weak) IBOutlet UILabel *username;
-@property (nonatomic, weak) IBOutlet UIButton *liked;
 @property (nonatomic, weak) IBOutlet UILabel *timeLabel;
 @property (nonatomic, weak) IBOutlet UIView *imageBorderView;
 
+- (IBAction)toggleLike:(UIButton *)sender;
+
+@property (nonatomic, strong) PFObject *date;
 @end

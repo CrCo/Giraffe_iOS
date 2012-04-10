@@ -12,7 +12,7 @@
 
 @protocol GFNavViewDelegate <NSObject>
 
-- (void) navView: (GFNavView *) view didSelectForController: (UIViewController *)controller;
+- (void) didSelectForController: (UIViewController *)controller;
 
 @end
 

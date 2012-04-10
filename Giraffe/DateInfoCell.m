@@ -8,10 +8,11 @@
 
 #import "DateInfoCell.h"
 #import <QuartzCore/QuartzCore.h>
+#import "Giraffe.h"
 
 @implementation DateInfoCell
 
-@synthesize timeLabel, username, userImage, description, liked, imageBorderView;
+@synthesize timeLabel, username, userImage, description, date=_date, imageBorderView;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -28,5 +29,29 @@
 
     // Configure the view for the selected state
 }
+
+- (IBAction)toggleLike:(UIButton *)sender {
+    if (sender.selected)
+    {
+        [self.date incrementKey:@"likes" byAmount:[NSNumber numberWithInt:-1]];
+    }
+    else
+    {
+        [self.date incrementKey:@"likes"];
+    }
+    [self.date saveEventually];
+    sender.selected = !sender.selected;
+}
+
+- (void)setDate:(PFObject *)aDate
+{
+    _date = aDate;
+    self.username.text = ((PFUser *)[[aDate objectForKey:@"user"] fetchIfNeeded]).username;
+    self.description.text = [aDate objectForKey:@"description"];
+    self.timeLabel.text = [Giraffe timeAgo:aDate.createdAt];
+
+}
+
+
 
 @end

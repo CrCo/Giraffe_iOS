@@ -11,19 +11,19 @@
 #import <Accounts/Accounts.h>
 #import "Giraffe.h"
 #import "StyleSettings.h"
+#import <Parse/Parse.h>
 
 @interface LoginController ()
 
 - (IBAction)loginUsingFacebook:(id)sender;
 - (IBAction)loginUsingTwitter:(id)sender;
-@property (weak, nonatomic) IBOutlet UIButton *twButton;
-@property (weak, nonatomic) IBOutlet UILabel *label;
+
+@property (nonatomic, strong) NSArray *allAccounts;
 
 @end
 
 @implementation LoginController
-@synthesize twButton;
-@synthesize label;
+@synthesize delegate,allAccounts;
 
 - (id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
@@ -40,8 +40,6 @@
 
 - (void)viewDidUnload
 {
-    [self setTwButton:nil];
-    [self setLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -52,19 +50,22 @@
 }
 
 - (IBAction)loginUsingFacebook:(id)sender {
-    [[Giraffe app].facebook authorize:nil];
-    [self dismissModalViewControllerAnimated:YES];
+    [PFFacebookUtils logInWithPermissions:[NSArray arrayWithObjects: nil] block:^(PFUser *user, NSError *error) {
+        if (error)
+        {
+            [[[UIAlertView alloc] initWithTitle:@"Hmmmm" message:[NSString stringWithFormat:@"Something went wrong: %@",error.localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+        }
+        [self.delegate loginControllerFinish:self];
+    }];
 }
 
 - (IBAction)loginUsingTwitter:(id)sender {
-    
-    [[Giraffe app] updateTwitter:^(BOOL success) {
-        if(success)
+    [PFTwitterUtils logInWithBlock:^(PFUser *user, NSError *error) {
+        if (error)
         {
-            dispatch_sync(dispatch_get_main_queue(), ^{
-                [self dismissModalViewControllerAnimated:YES];
-              });
+            [[[UIAlertView alloc] initWithTitle:@"Hmmmm" message:[NSString stringWithFormat:@"Something went wrong: %@",error.localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
         }
+        [self.delegate loginControllerFinish:self];
     }];
 }
 

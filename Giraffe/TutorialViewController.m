@@ -27,6 +27,7 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
+        self.modalPresentationStyle = UIModalPresentationFullScreen;
     }
     return self;
 }
@@ -72,6 +73,16 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     self.pageControl.currentPage = roundl(scrollView.contentOffset.x /scrollView.bounds.size.width);
+}
+
+- (void)loginControllerFinish:(LoginController *)loginCntl
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    ((LoginController *)segue.destinationViewController).delegate = self;
 }
 
 @end

@@ -81,7 +81,7 @@ BOOL _lastKnownStateOpen;
 
 - (void) buttonClicked: (UIButton *) sender
 {
-    [self.delegate navView:self didSelectForController:objc_getAssociatedObject(sender, &CONTROLLER_KEY)];
+    [self.delegate didSelectForController:objc_getAssociatedObject(sender, &CONTROLLER_KEY)];
     [self setOpen:NO];
 }
 
