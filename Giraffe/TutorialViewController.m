@@ -36,25 +36,17 @@
 {
     [super viewDidLoad];
     
-    UIImageView *content1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Content1"]];
-    UIImageView *content2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Content2"]];
-    UIImageView *content3 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Content3"]];
-    UIImageView *content4 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Content4"]];
-    UIImageView *content5 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Content5"]];
-        
-    [self.scrollView addSubview:content1];
-    [self.scrollView addSubview:content2];
-    [self.scrollView addSubview:content3];
-    [self.scrollView addSubview:content4];
-    [self.scrollView addSubview:content5];
+    NSArray *allImages = [NSArray arrayWithObjects:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Content1"]], [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Content2"]], [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Content4"]], [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Content5"]], nil];
     
-    CENTER_FRAME_IN_PARENT_WITH_MULTIPLE(content1, 0);
-    CENTER_FRAME_IN_PARENT_WITH_MULTIPLE(content2, 1);
-    CENTER_FRAME_IN_PARENT_WITH_MULTIPLE(content3, 2);
-    CENTER_FRAME_IN_PARENT_WITH_MULTIPLE(content4, 3);
-    CENTER_FRAME_IN_PARENT_WITH_MULTIPLE(content5, 4);
+    for (int index = 0; index < allImages.count; index++)
+    {
+        UIImageView *view = [allImages objectAtIndex:index];
+        [view setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin];
+        [self.scrollView addSubview:view];
+        CENTER_FRAME_IN_PARENT_WITH_MULTIPLE(view, index);
+    }
     
-    self.scrollView.contentSize = CGSizeApplyAffineTransform(self.scrollView.bounds.size, CGAffineTransformMakeScale(5, 1));
+    self.scrollView.contentSize = CGSizeApplyAffineTransform(self.scrollView.bounds.size, CGAffineTransformMakeScale(allImages.count, 1));
 }
 
 - (void)viewDidUnload

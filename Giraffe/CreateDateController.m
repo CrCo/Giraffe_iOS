@@ -22,11 +22,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *characterCountLabel;
 @property (weak, nonatomic) IBOutlet UIView *themesPanel;
 @property (weak, nonatomic) IBOutlet UIScrollView *themesScroller;
-@property (strong, nonatomic) UIImageView *nextThemeImageView;
+@property (strong, nonatomic) UIButton *nextThemeImageView;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
 @property (weak, nonatomic) IBOutlet DollarsView *costView;
 @property (weak, nonatomic) IBOutlet UISlider *costSlider;
 @property (strong, nonatomic) NSArray *themes;
+@property (strong, nonatomic) NSMutableArray *selectedThemes;
 
 @property (nonatomic) NSInteger themeSideLength;
 - (IBAction)createObj:(id)sender;
@@ -45,7 +46,7 @@
 @synthesize descriptionTextView;
 @synthesize costView;
 @synthesize costSlider;
-@synthesize themes;
+@synthesize themes, selectedThemes;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -53,6 +54,7 @@
     if (self) {
         self.themes = [NSArray arrayWithObjects:[ThemeItem itemWithTitle:@"Active"], [ThemeItem itemWithTitle:@"Adventure"], [ThemeItem itemWithTitle:@"Daytime"], [ThemeItem itemWithTitle:@"Drinks"], [ThemeItem itemWithTitle:@"Event"], [ThemeItem itemWithTitle:@"Food"], [ThemeItem itemWithTitle:@"Indoor"], [ThemeItem itemWithTitle:@"Low-Key"], [ThemeItem itemWithTitle:@"Night"], [ThemeItem itemWithTitle:@"Outdoor"], [ThemeItem itemWithTitle:@"Quick"], [ThemeItem itemWithTitle:@"Romantic"], nil];
         self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Create Date" image:[UIImage imageNamed:@"AddDate"] tag:3];
+        self.selectedThemes = [[NSMutableArray alloc] initWithCapacity:5];
    }
     return self;
 }
@@ -75,21 +77,22 @@
 {
     [super viewDidLoad];
 
+    CGFloat themeSize = CGRectGetHeight(self.themesScroller.frame);
+    
     for (int i = 0; i < [self.themes count]; i++)
     {
-        UIButton *button = ((ThemeItem *)[self.themes objectAtIndex:i]).button;
-        button.frame = CGRectMake(i*60, 0, 60, 60);
-        [button addTarget:self action:@selector(selectTheme:) forControlEvents:UIControlEventTouchUpInside];
-        button.showsTouchWhenHighlighted = YES;
+        ThemeButton *button = [[ThemeButton alloc] initWithFrame:CGRectMake(i*themeSize, 0, themeSize, themeSize)];
+        button.delegate = self;
+        button.theme = [self.themes objectAtIndex:i];
         [self.themesScroller addSubview:button];
     }
     
     self.localeLabel.text = [NSString stringWithFormat:@"%@, %@", [Giraffe app].location.locality, [Giraffe app].location.administrativeArea];
     
-    self.themesScroller.contentSize = CGSizeMake(720, 60);
+    self.themesScroller.contentSize = CGSizeMake(self.themes.count *themeSize, themeSize);
     
     self.themeSideLength = CGRectGetHeight(self.themesPanel.frame);
-    self.nextThemeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.themeSideLength, self.themeSideLength)];
+    self.nextThemeImageView = [[UIButton alloc] initWithFrame:CGRectMake(-self.themeSideLength - EXTRA_DISTANCE, 0, self.themeSideLength, self.themeSideLength)];
     [self.themesPanel addSubview:self.nextThemeImageView];
     [self setCharaterCount: self.descriptionTextView.text.length];
     [self.costView updateView:self.costSlider.value];
@@ -146,47 +149,65 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:GFCreatedDate object:testObject];
 }
 
-- (void)selectTheme:(UIButton *)sender
+- (BOOL)themeButtonPressed:(ThemeItem *)theme
 {
-    if (sender.selected) 
+    NSUInteger indexOfTheme = [self.selectedThemes indexOfObject:theme];
+    if (indexOfTheme != NSNotFound) 
     {
-        CGAffineTransform transform = CGAffineTransformIdentity;
-        for (UIImageView *view in self.themesPanel.subviews)
-        {
-            if (!CGAffineTransformIsIdentity(transform))
-            {
-                [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-                    view.transform = transform;
-                } completion:^(BOOL finished) {
-                    view.transform = CGAffineTransformIdentity;
-                    view.frame = CGRectApplyAffineTransform(view.frame, transform);
-                }];
-            }
-            else if (view.image == sender.imageView.image)
-            {
-                transform = CGAffineTransformMakeTranslation(-CGRectGetWidth(view.frame) - EXTRA_DISTANCE, 0);
-                [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-                    view.alpha = 0.0;
-                } completion:^(BOOL finished) {
-                    [view removeFromSuperview];
-                }];
-            }
-        }
-    }
+        //Since we have a secret hidden view to the far left of the view, we need to add one.
+        indexOfTheme += 1;
+        
+        //Manage the data model: the selected themes
+        [self.selectedThemes removeObject:theme];
 
-    sender.selected = !sender.selected;
-    if (sender.selected)
+        //Change the visual elements
+        //+ 1 because of the secret base element
+        UIButton *selectedThemeView = [self.themesPanel.subviews objectAtIndex:indexOfTheme];
+
+        //If we are removing the last one, we need to set the nextThemeView pointer one element back
+        if (self.nextThemeImageView == selectedThemeView)
+        {
+            self.nextThemeImageView = [self.themesPanel.subviews objectAtIndex:indexOfTheme -1];
+        }
+        
+        //Go through all elements in the view that come later and shift them to the left
+        CGAffineTransform transform = CGAffineTransformMakeTranslation(-CGRectGetWidth(self.nextThemeImageView .frame) - EXTRA_DISTANCE, 0);
+
+        for (int i = indexOfTheme + 1; i < self.themesPanel.subviews.count; i++)
+        {
+            UIImageView *view = [self.themesPanel.subviews objectAtIndex:i];
+        
+            [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+                view.transform = transform;
+            } completion:^(BOOL finished) {
+                view.transform = CGAffineTransformIdentity;
+                view.frame = CGRectApplyAffineTransform(view.frame, transform);
+            }];
+        }
+        //Remove the item iteself
+        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            selectedThemeView.alpha = 0.0;
+        } completion:^(BOOL finished) {
+            [selectedThemeView removeFromSuperview];
+        }];
+    }
+    else if (self.themesPanel.subviews.count <= 5)
     {
-        self.nextThemeImageView.image = sender.imageView.image;
+        //Manage the data model: the selected themes
+        [self.selectedThemes addObject:theme];
+        CGFloat nextX = CGRectGetMaxX(self.nextThemeImageView.frame) + EXTRA_DISTANCE;
+        //Create a new button
+        self.nextThemeImageView = theme.button; 
+        self.nextThemeImageView.frame = CGRectMake(nextX, 0, self.themeSideLength, self.themeSideLength);
         self.nextThemeImageView.alpha = 0.0;
         [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             self.nextThemeImageView.alpha = 1.0;
         } completion: nil];
 
-        self.nextThemeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.nextThemeImageView.frame) + EXTRA_DISTANCE, 0, self.themeSideLength, self.themeSideLength)];
         [self.themesPanel addSubview:self.nextThemeImageView];
-        
+        return YES;
     }
+    return NO;
 }
 
 - (void)changeCost:(UISlider *)sender

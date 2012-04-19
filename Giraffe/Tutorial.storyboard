@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="nOi-G3-CKd">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
@@ -15,7 +14,7 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="LaunchBackground.png" id="mlO-K9-ifR">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Launchbg460.png" id="mlO-K9-ifR">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
@@ -35,6 +34,10 @@
                                     <segue destination="409-f6-GHx" kind="push" id="7Rx-5W-yt8"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="TextDisplayBackground.png" id="fV1-PY-Wof">
+                                <rect key="frame" x="0.0" y="183" width="320" height="194"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="b3U-D5-ORq">
                                 <rect key="frame" x="0.0" y="183" width="320" height="194"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -68,10 +71,14 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="LaunchBackground.png" id="Mia-bE-yaa">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Launchbg460.png" id="Mia-bE-yaa">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="TextDisplayBackground.png" id="I2I-MX-Lpm">
+                                <rect key="frame" x="0.0" y="208" width="320" height="194"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ffI-CI-5WA">
                                 <rect key="frame" x="34" y="311" width="253" height="50"/>
@@ -85,7 +92,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="loginUsingFacebook:" destination="409-f6-GHx" eventType="touchUpInside" id="1ds-aF-LyU"/>
+                                    <segue destination="IO0-oV-mZH" kind="push" id="v5a-OC-2gr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bNh-Lw-2IZ">
@@ -100,44 +107,68 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="loginUsingTwitter:" destination="409-f6-GHx" eventType="touchUpInside" id="uqI-Ff-Gxi"/>
+                                    <segue destination="IO0-oV-mZH" kind="push" id="uNu-4e-FFK"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="29" id="xjf-3j-29F">
-                                <rect key="frame" x="105" y="200" width="202" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                <connections>
-                                    <action selector="doneEditing:" destination="409-f6-GHx" eventType="editingDidEndOnExit" id="qJ3-Kn-SxV"/>
-                                </connections>
-                            </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="dcN-WO-zQ9">
-                                <rect key="frame" x="20" y="205" width="77" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Dut-Ct-Nm1"/>
                     <connections>
-                        <outlet property="UsernameLabel" destination="dcN-WO-zQ9" id="jeJ-D2-hxs"/>
                         <outlet property="facebookButton" destination="ffI-CI-5WA" id="ofy-4Y-UyG"/>
                         <outlet property="twitterButton" destination="bNh-Lw-2IZ" id="g3V-SQ-cPe"/>
-                        <outlet property="usernameField" destination="xjf-3j-29F" id="ulB-ra-zw8"/>
                     </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1002" y="48"/>
         </scene>
+        <!--Username Controller-->
+        <scene sceneID="2Ek-bj-iCQ">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uwz-ng-uTe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="IO0-oV-mZH" customClass="UsernameController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="efs-Pz-LIU">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Launchbg460.png" id="ijn-e7-9dQ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="zif-wJ-yAJ">
+                                <rect key="frame" x="20" y="195" width="280" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="onDone:" destination="IO0-oV-mZH" eventType="editingDidEndOnExit" id="x23-Mx-Tzs"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Please choose your username:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="mNF-oG-cyk">
+                                <rect key="frame" x="12" y="155" width="296" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.25490196078431371" green="0.25490196078431371" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="5TN-WI-mf6"/>
+                    <connections>
+                        <outlet property="prompt" destination="mNF-oG-cyk" id="N77-3C-Uvd"/>
+                        <outlet property="username" destination="zif-wJ-yAJ" id="xWK-wD-ID0"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1406" y="64"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="0oK-tp-t3P">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nbL-M5-DZO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController navigationBarHidden="YES" id="nOi-G3-CKd" sceneMemberID="viewController">
+                <navigationController wantsFullScreenLayout="YES" navigationBarHidden="YES" id="nOi-G3-CKd" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="uKY-6B-chO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -155,20 +186,16 @@
     <resources>
         <image name="FacebookLogin.png" width="253" height="50"/>
         <image name="GetStartedButton.png" width="121" height="30"/>
-        <image name="LaunchBackground.png" width="320" height="480"/>
+        <image name="Launchbg460.png" width="320" height="460"/>
+        <image name="TextDisplayBackground.png" width="320" height="252"/>
         <image name="TwitterLogin.png" width="253" height="50"/>
     </resources>
     <classes>
         <class className="LoginController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginController.h"/>
             <relationships>
-                <relationship kind="action" name="doneEditing:"/>
-                <relationship kind="action" name="loginUsingFacebook:"/>
-                <relationship kind="action" name="loginUsingTwitter:"/>
-                <relationship kind="outlet" name="UsernameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="facebookButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="twitterButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="usernameField" candidateClass="UITextField"/>
             </relationships>
         </class>
         <class className="TutorialViewController" superclassName="UIViewController">
@@ -178,10 +205,21 @@
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
             </relationships>
         </class>
+        <class className="UsernameController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UsernameController.h"/>
+            <relationships>
+                <relationship kind="action" name="onDone:"/>
+                <relationship kind="outlet" name="prompt" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+            </relationships>
+        </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="v5a-OC-2gr"/>
+    </inferredMetricsTieBreakers>
 </document>

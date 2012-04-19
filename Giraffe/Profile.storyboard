@@ -173,7 +173,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="gDS-ab-d8h">
                         <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="xM4-fb-1l7">
-                            <color key="tintColor" red="0.90980398650000005" green="0.72941178080000002" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                            <color key="tintColor" red="1" green="0.7125816751556231" blue="0.034558936920025318" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="2Tx-SJ-6Cl" kind="push" id="sp9-CC-gWv"/>
                             </connections>
@@ -261,6 +261,7 @@
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="r1H-U2-GXK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="0.71258167520000004" blue="0.034558936919999998" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

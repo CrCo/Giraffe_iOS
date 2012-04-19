@@ -28,7 +28,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="Cell" rowHeight="64" id="vhC-Mc-oF4" customClass="DateInfoCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="Cell" rowHeight="64" id="vhC-Mc-oF4" customClass="DateInfoCell">
                                         <rect key="frame" x="0.0" y="22" width="269" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -36,7 +36,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AY5-9j-Cpq">
-                                                    <rect key="frame" x="235" y="30" width="25" height="25"/>
+                                                    <rect key="frame" x="227" y="13" width="37" height="37"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <state key="normal" image="Heart_NotLiked.png">
@@ -110,8 +110,18 @@
                         <gestureRecognizers/>
                     </view>
                     <navigationItem key="navigationItem" id="1N7-ul-Ogk">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="mVM-TA-ljb">
+                            <rect key="frame" x="89" y="7" width="141" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Popular"/>
+                                <segment title="Following"/>
+                            </segments>
+                            <color key="tintColor" red="1" green="0.71258167520000004" blue="0.034558936919999998" alpha="1" colorSpace="calibratedRGB"/>
+                        </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="5bx-ov-vhd">
-                            <color key="tintColor" red="0.88235300779342651" green="0.76078438758850098" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                            <color key="tintColor" red="1" green="0.71258167520000004" blue="0.034558936919999998" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -199,7 +209,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="F3j-8D-WFO">
-                                <rect key="frame" x="248" y="314" width="27" height="27"/>
+                                <rect key="frame" x="248" y="314" width="37" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="Heart_NotLiked.png">
@@ -262,6 +272,7 @@
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Jgw-FU-fMJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="0.71258167520000004" blue="0.034558936919999998" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -274,8 +285,8 @@
     </scenes>
     <resources>
         <image name="BackgroundwTopShadow.png" width="320" height="416"/>
-        <image name="Heart_Liked.png" width="25" height="25"/>
-        <image name="Heart_NotLiked.png" width="25" height="25"/>
+        <image name="Heart_Liked.png" width="37" height="37"/>
+        <image name="Heart_NotLiked.png" width="37" height="37"/>
         <image name="Scroll.png" width="300" height="367"/>
     </resources>
     <classes>

@@ -64,7 +64,7 @@
                                 <rect key="frame" x="43" y="201" width="233" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="minimumTrackTintColor" red="0.90980398650000005" green="0.72941178080000002" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
-                                <color key="maximumTrackTintColor" red="0.95686280727386475" green="0.83921575546264648" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="maximumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="thumbTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="changeCost:" destination="c9J-3b-dq1" eventType="valueChanged" id="DqE-Bl-Iq0"/>
@@ -96,8 +96,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Dyf-w4-zAU">
+                        <nil key="title"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="Gpr-sU-xnK">
-                            <color key="tintColor" red="0.90980398650000005" green="0.72941178080000002" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                            <color key="tintColor" red="0.95912879705429077" green="0.79695778131297179" blue="0.015734725534047641" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="createObj:" destination="c9J-3b-dq1" id="vus-u2-22J"/>
                             </connections>
@@ -125,6 +126,7 @@
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="j8j-9S-kEG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="0.71258167520000004" blue="0.034558936919999998" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

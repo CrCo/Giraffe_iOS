@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ThemeButton.h"
 
-@interface CreateDateController : UIViewController <UITextViewDelegate>
+@interface CreateDateController : UIViewController <UITextViewDelegate, ThemeButtonDelegate>
 
 @end

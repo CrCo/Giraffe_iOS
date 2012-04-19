@@ -77,8 +77,8 @@ CGPoint lastPoint;
     [super viewDidLoad];
     [self updateDates];
     
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"TopBarWShadow"] forBarMetrics:UIBarMetricsDefault];
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TopBarLogo"]];
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"TopBarWShadow"] forBarMetrics:UIBarMetricsDefault];
+//    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TopBarLogo"]];
     
     if (![PFUser currentUser])
     {
@@ -126,6 +126,7 @@ CGPoint lastPoint;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     ((DetailedDateController *)segue.destinationViewController).date = [self.listOfDates objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+    [self.tableView cellForRowAtIndexPath: self.tableView.indexPathForSelectedRow].selected = NO;
 }
 
 @end

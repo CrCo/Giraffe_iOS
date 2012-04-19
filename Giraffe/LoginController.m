@@ -12,27 +12,17 @@
 #import "Giraffe.h"
 #import "StyleSettings.h"
 #import <Parse/Parse.h>
+#import "UsernameController.h"
 
 @interface LoginController ()
 
-- (IBAction)doneEditing:(id)sender;
-@property (weak, nonatomic) IBOutlet UILabel *UsernameLabel;
-- (IBAction)loginUsingFacebook:(id)sender;
-- (IBAction)loginUsingTwitter:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *twitterButton;
 @property (weak, nonatomic) IBOutlet UIButton *facebookButton;
-@property (weak, nonatomic) IBOutlet UITextField *usernameField;
-
-@property (nonatomic, strong) NSArray *allAccounts;
 
 @end
 
 @implementation LoginController
-@synthesize twitterButton;
-@synthesize facebookButton;
-@synthesize usernameField;
-@synthesize UsernameLabel;
-@synthesize delegate,allAccounts;
+@synthesize delegate, twitterButton, facebookButton;
 
 - (id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
@@ -45,16 +35,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.UsernameLabel.font = [UIFont fontWithName:@"appetite" size:24.0];
-    [self.usernameField becomeFirstResponder];
 }
 
 - (void)viewDidUnload
 {
-    [self setUsernameLabel:nil];
-    [self setTwitterButton:nil];
-    [self setFacebookButton:nil];
-    [self setUsernameField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -64,30 +48,21 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (IBAction)loginUsingFacebook:(id)sender {
-    [PFFacebookUtils linkUser:[PFUser currentUser] permissions:[NSArray arrayWithObjects: nil] block:^(BOOL succeeded, NSError *error) {
-
-        [self.delegate loginControllerFinish:self];
-    }];
-}
-
-- (IBAction)loginUsingTwitter:(id)sender {
-    [PFTwitterUtils linkUser:[PFUser currentUser] block:^(BOOL succeeded, NSError *error) {
-        [self.delegate loginControllerFinish:self];
-    }];
-}
-
-- (IBAction)doneEditing:(id)sender {
-    //We always want a user to exist
-    PFUser *newUser = [PFUser user];
-
-    newUser.username = self.usernameField.text;
-    newUser.password = @"2(*^(%#HJSHFIUHOGT(&#O*GK3453563";
-    NSError *err = nil;
-    [newUser signUp: &err];
-    if (err)
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    UsernameController *cntlr =  (UsernameController *) segue.destinationViewController;
+    if (self.twitterButton == sender)
     {
-        [[[UIAlertView alloc] initWithTitle:@"Problem" message:[NSString stringWithFormat: @"Error: %@", err.localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+        [PFTwitterUtils logInWithBlock: ^(PFUser *user, NSError *error) {
+        }];
     }
+    else if (self.facebookButton == sender) 
+    {
+        [PFFacebookUtils logInWithPermissions:[NSArray arrayWithObjects: nil] block:^(PFUser * user, NSError *error) {
+            
+        }];   
+    }
+    cntlr.delegate = self.delegate;
 }
+
 @end

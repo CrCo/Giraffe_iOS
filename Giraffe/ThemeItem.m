@@ -10,7 +10,7 @@
 
 @implementation ThemeItem
 
-@synthesize title=_title, button=_button;
+@synthesize title=_title;
 
 - (id)init: (NSString *)title
 {
@@ -24,12 +24,9 @@
 
 - (UIButton *)button
 {
-    if (!_button)
-    {
-        _button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@Icon", self.title]] forState:UIControlStateNormal];
-        [_button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@Icon_selected", self.title]] forState:UIControlStateSelected];
-    }
+    UIButton *_button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@Icon", self.title]] forState:UIControlStateNormal];
+    [_button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@Icon_selected", self.title]] forState:UIControlStateSelected];
     return _button;
 }
 

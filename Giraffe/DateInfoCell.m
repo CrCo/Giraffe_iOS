@@ -14,9 +14,9 @@
 
 @synthesize timeLabel, username, userImage, description, date=_date, imageBorderView;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    self = [super initWithCoder:aDecoder];
     if (self) {
         self.imageBorderView.layer.cornerRadius = 4.0;
     }

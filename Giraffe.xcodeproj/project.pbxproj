@@ -7,17 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3711418C1534DFBF00B00251 /* Launchbg460@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3711418A1534DFBF00B00251 /* Launchbg460@2x.png */; };
+		3711418D1534DFBF00B00251 /* Launchbg460.png in Resources */ = {isa = PBXBuildFile; fileRef = 3711418B1534DFBF00B00251 /* Launchbg460.png */; };
+		371141911534E35100B00251 /* UsernameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 371141901534E35100B00251 /* UsernameController.m */; };
 		3715AE0A152275ED00D2861B /* DollarsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3715AE09152275ED00D2861B /* DollarsView.m */; };
+		371A1F53153C8EB800E8598B /* Heart_Liked.png in Resources */ = {isa = PBXBuildFile; fileRef = 371A1F4F153C8EB800E8598B /* Heart_Liked.png */; };
+		371A1F54153C8EB800E8598B /* Heart_Liked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 371A1F50153C8EB800E8598B /* Heart_Liked@2x.png */; };
+		371A1F55153C8EB800E8598B /* Heart_NotLiked.png in Resources */ = {isa = PBXBuildFile; fileRef = 371A1F51153C8EB800E8598B /* Heart_NotLiked.png */; };
+		371A1F56153C8EB800E8598B /* Heart_NotLiked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 371A1F52153C8EB800E8598B /* Heart_NotLiked@2x.png */; };
+		371A1F5A153DC86100E8598B /* ThemeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 371A1F59153DC86000E8598B /* ThemeButton.m */; };
 		3742CAEE1531F69A00B80400 /* ProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3742CAED1531F69A00B80400 /* ProfileController.m */; };
 		3769B5CB1531F2AE00B439C7 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3769B5CA1531F2AE00B439C7 /* Profile.storyboard */; };
 		3769B5CD1531F30F00B439C7 /* MakeDate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3769B5CC1531F30F00B439C7 /* MakeDate.storyboard */; };
 		3769B5CF1531F3B800B439C7 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3769B5CE1531F3B800B439C7 /* Tutorial.storyboard */; };
 		376DA99415194633009BD121 /* BackgroundwTopShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 376DA98C15194633009BD121 /* BackgroundwTopShadow@2x.png */; };
 		376DA99515194633009BD121 /* BackgroundwTopShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 376DA98D15194633009BD121 /* BackgroundwTopShadow.png */; };
-		376DA99615194633009BD121 /* Heart_Liked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 376DA98E15194633009BD121 /* Heart_Liked@2x.png */; };
-		376DA99715194633009BD121 /* Heart_Liked.png in Resources */ = {isa = PBXBuildFile; fileRef = 376DA98F15194633009BD121 /* Heart_Liked.png */; };
-		376DA99815194633009BD121 /* Heart_NotLiked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 376DA99015194633009BD121 /* Heart_NotLiked@2x.png */; };
-		376DA99915194633009BD121 /* Heart_NotLiked.png in Resources */ = {isa = PBXBuildFile; fileRef = 376DA99115194633009BD121 /* Heart_NotLiked.png */; };
 		376DA99A15194633009BD121 /* Scroll@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 376DA99215194633009BD121 /* Scroll@2x.png */; };
 		376DA99B15194633009BD121 /* Scroll.png in Resources */ = {isa = PBXBuildFile; fileRef = 376DA99315194633009BD121 /* Scroll.png */; };
 		376DA9A3151A56DE009BD121 /* GFNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 376DA9A2151A56DE009BD121 /* GFNavView.m */; };
@@ -159,8 +163,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3711418A1534DFBF00B00251 /* Launchbg460@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Launchbg460@2x.png"; sourceTree = "<group>"; };
+		3711418B1534DFBF00B00251 /* Launchbg460.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Launchbg460.png; sourceTree = "<group>"; };
+		3711418F1534E35000B00251 /* UsernameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsernameController.h; sourceTree = "<group>"; };
+		371141901534E35100B00251 /* UsernameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsernameController.m; sourceTree = "<group>"; };
 		3715AE08152275ED00D2861B /* DollarsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DollarsView.h; sourceTree = "<group>"; };
 		3715AE09152275ED00D2861B /* DollarsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DollarsView.m; sourceTree = "<group>"; };
+		371A1F4F153C8EB800E8598B /* Heart_Liked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Heart_Liked.png; sourceTree = "<group>"; };
+		371A1F50153C8EB800E8598B /* Heart_Liked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heart_Liked@2x.png"; sourceTree = "<group>"; };
+		371A1F51153C8EB800E8598B /* Heart_NotLiked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Heart_NotLiked.png; sourceTree = "<group>"; };
+		371A1F52153C8EB800E8598B /* Heart_NotLiked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heart_NotLiked@2x.png"; sourceTree = "<group>"; };
+		371A1F58153DC86000E8598B /* ThemeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeButton.h; sourceTree = "<group>"; };
+		371A1F59153DC86000E8598B /* ThemeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeButton.m; sourceTree = "<group>"; };
 		3742CAEC1531F69A00B80400 /* ProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileController.h; sourceTree = "<group>"; };
 		3742CAED1531F69A00B80400 /* ProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileController.m; sourceTree = "<group>"; };
 		3769B5CA1531F2AE00B439C7 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
@@ -168,10 +182,6 @@
 		3769B5CE1531F3B800B439C7 /* Tutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
 		376DA98C15194633009BD121 /* BackgroundwTopShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackgroundwTopShadow@2x.png"; sourceTree = "<group>"; };
 		376DA98D15194633009BD121 /* BackgroundwTopShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundwTopShadow.png; sourceTree = "<group>"; };
-		376DA98E15194633009BD121 /* Heart_Liked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heart_Liked@2x.png"; sourceTree = "<group>"; };
-		376DA98F15194633009BD121 /* Heart_Liked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Heart_Liked.png; sourceTree = "<group>"; };
-		376DA99015194633009BD121 /* Heart_NotLiked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heart_NotLiked@2x.png"; sourceTree = "<group>"; };
-		376DA99115194633009BD121 /* Heart_NotLiked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Heart_NotLiked.png; sourceTree = "<group>"; };
 		376DA99215194633009BD121 /* Scroll@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Scroll@2x.png"; sourceTree = "<group>"; };
 		376DA99315194633009BD121 /* Scroll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Scroll.png; sourceTree = "<group>"; };
 		376DA9A1151A56DE009BD121 /* GFNavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFNavView.h; sourceTree = "<group>"; };
@@ -527,6 +537,8 @@
 				37C7C354150AAE32008AD657 /* MainScreen.storyboard */,
 				3769B5CE1531F3B800B439C7 /* Tutorial.storyboard */,
 				3769B5CC1531F30F00B439C7 /* MakeDate.storyboard */,
+				3711418F1534E35000B00251 /* UsernameController.h */,
+				371141901534E35100B00251 /* UsernameController.m */,
 				37F3A7121533BAB3000A96A5 /* DetailedDateController.h */,
 				37F3A7131533BAB3000A96A5 /* DetailedDateController.m */,
 				3742CAEC1531F69A00B80400 /* ProfileController.h */,
@@ -537,6 +549,8 @@
 				3715AE09152275ED00D2861B /* DollarsView.m */,
 				37AC5A7D15223A3500343E1F /* CreateDateController.h */,
 				37AC5A7E15223A3500343E1F /* CreateDateController.m */,
+				371A1F58153DC86000E8598B /* ThemeButton.h */,
+				371A1F59153DC86000E8598B /* ThemeButton.m */,
 				37F3A72F1533CEAA000A96A5 /* ThemeItem.h */,
 				37F3A7301533CEAA000A96A5 /* ThemeItem.m */,
 				37CE5F3C150A9550007FB05B /* facebook-ios-sdk */,
@@ -596,14 +610,16 @@
 		37FB6F001514309B0012AF79 /* Common UI */ = {
 			isa = PBXGroup;
 			children = (
+				371A1F4F153C8EB800E8598B /* Heart_Liked.png */,
+				371A1F50153C8EB800E8598B /* Heart_Liked@2x.png */,
+				371A1F51153C8EB800E8598B /* Heart_NotLiked.png */,
+				371A1F52153C8EB800E8598B /* Heart_NotLiked@2x.png */,
+				3711418A1534DFBF00B00251 /* Launchbg460@2x.png */,
+				3711418B1534DFBF00B00251 /* Launchbg460.png */,
 				37BBF01715339A9B00B5DC24 /* TopBarLogo@2x.png */,
 				37BBF01815339A9B00B5DC24 /* TopBarLogo.png */,
 				376DA98C15194633009BD121 /* BackgroundwTopShadow@2x.png */,
 				376DA98D15194633009BD121 /* BackgroundwTopShadow.png */,
-				376DA98E15194633009BD121 /* Heart_Liked@2x.png */,
-				376DA98F15194633009BD121 /* Heart_Liked.png */,
-				376DA99015194633009BD121 /* Heart_NotLiked@2x.png */,
-				376DA99115194633009BD121 /* Heart_NotLiked.png */,
 				376DA99215194633009BD121 /* Scroll@2x.png */,
 				376DA99315194633009BD121 /* Scroll.png */,
 				37FB6ED615142FD40012AF79 /* AddDate@2x.png */,
@@ -735,10 +751,6 @@
 				37FB6F0F151431220012AF79 /* Default.png in Resources */,
 				376DA99415194633009BD121 /* BackgroundwTopShadow@2x.png in Resources */,
 				376DA99515194633009BD121 /* BackgroundwTopShadow.png in Resources */,
-				376DA99615194633009BD121 /* Heart_Liked@2x.png in Resources */,
-				376DA99715194633009BD121 /* Heart_Liked.png in Resources */,
-				376DA99815194633009BD121 /* Heart_NotLiked@2x.png in Resources */,
-				376DA99915194633009BD121 /* Heart_NotLiked.png in Resources */,
 				376DA99A15194633009BD121 /* Scroll@2x.png in Resources */,
 				376DA99B15194633009BD121 /* Scroll.png in Resources */,
 				37AC5A791522362000343E1F /* AppIcon.png in Resources */,
@@ -824,6 +836,12 @@
 				37BBF02315339EFF00B5DC24 /* Title&numberdisplay.png in Resources */,
 				37F3A72B1533BC10000A96A5 /* LocationTitle@2x.png in Resources */,
 				37F3A72C1533BC10000A96A5 /* LocationTitle.png in Resources */,
+				3711418C1534DFBF00B00251 /* Launchbg460@2x.png in Resources */,
+				3711418D1534DFBF00B00251 /* Launchbg460.png in Resources */,
+				371A1F53153C8EB800E8598B /* Heart_Liked.png in Resources */,
+				371A1F54153C8EB800E8598B /* Heart_Liked@2x.png in Resources */,
+				371A1F55153C8EB800E8598B /* Heart_NotLiked.png in Resources */,
+				371A1F56153C8EB800E8598B /* Heart_NotLiked@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -851,6 +869,8 @@
 				37EB79CC1533A80300A3B777 /* ProfileSettingsController.m in Sources */,
 				37F3A7141533BAB3000A96A5 /* DetailedDateController.m in Sources */,
 				37F3A7311533CEAA000A96A5 /* ThemeItem.m in Sources */,
+				371141911534E35100B00251 /* UsernameController.m in Sources */,
+				371A1F5A153DC86100E8598B /* ThemeButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
