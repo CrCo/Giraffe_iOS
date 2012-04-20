@@ -95,7 +95,7 @@
     self.nextThemeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(-self.themeSideLength - EXTRA_DISTANCE, 0, self.themeSideLength, self.themeSideLength)];
     [self.themesPanel addSubview:self.nextThemeImageView];
     [self setCharaterCount: self.descriptionTextView.text.length];
-    [self.costView updateView:self.costSlider.value];
+    [self.costView setCost:self.costSlider.value];
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"TopBarWShadow"] forBarMetrics:UIBarMetricsDefault];
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TopBarLogo"]];
@@ -211,7 +211,7 @@
 
 - (void)changeCost:(UISlider *)sender
 {
-    [self.costView updateView:sender.value];
+    [self.costView setCost:sender.value];
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text

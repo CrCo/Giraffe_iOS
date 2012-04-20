@@ -56,7 +56,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" id="p2y-aK-9lS" customClass="DollarsView">
-                                <rect key="frame" x="120" y="170" width="81" height="27"/>
+                                <rect key="frame" x="109" y="170" width="165" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>

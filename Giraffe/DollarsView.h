@@ -10,6 +10,6 @@
 
 @interface DollarsView : UIView
 
-- (void) updateView: (float) value;
+- (void) setCost: (float) value;
 
 @end

@@ -166,7 +166,7 @@
     {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"CostDatePartView" owner:self options:nil] objectAtIndex:0];
         self.costTitleLabel.font = _font;
-        [self.costIconView updateView:((NSNumber *)[self.date objectForKey:@"cost"]).floatValue];
+        [self.costIconView setCost:((NSNumber *)[self.date objectForKey:@"cost"]).floatValue];
 
     }
     else
