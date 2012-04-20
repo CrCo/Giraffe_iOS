@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "LoginController.h"
 
-@interface MainScreenController : UIViewController <UITableViewDataSource, UIScrollViewDelegate, UITableViewDelegate>
+@interface MainScreenController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic) BOOL needsLogin;
 

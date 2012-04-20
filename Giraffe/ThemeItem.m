@@ -22,12 +22,14 @@
     return self;
 }
 
-- (UIButton *)button
+- (UIImage *)image
 {
-    UIButton *_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@Icon", self.title]] forState:UIControlStateNormal];
-    [_button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@Icon_selected", self.title]] forState:UIControlStateSelected];
-    return _button;
+    return [UIImage imageNamed:[NSString stringWithFormat:@"%@Icon", self.title]];
+}
+
+- (UIImage *) selectedImage
+{
+    return [UIImage imageNamed:[NSString stringWithFormat:@"%@Icon_selected", self.title]];
 }
 
 + (id) itemWithTitle: (NSString *) title

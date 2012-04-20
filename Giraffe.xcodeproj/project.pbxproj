@@ -25,6 +25,10 @@
 		376DA99A15194633009BD121 /* Scroll@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 376DA99215194633009BD121 /* Scroll@2x.png */; };
 		376DA99B15194633009BD121 /* Scroll.png in Resources */ = {isa = PBXBuildFile; fileRef = 376DA99315194633009BD121 /* Scroll.png */; };
 		376DA9A3151A56DE009BD121 /* GFNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 376DA9A2151A56DE009BD121 /* GFNavView.m */; };
+		376E4C661540FD6800F38BAA /* TimeNameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 376E4C651540FD6800F38BAA /* TimeNameView.m */; };
+		376E4C6F1541AEB700F38BAA /* ThemeDatePartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 376E4C6E1541AEB600F38BAA /* ThemeDatePartView.xib */; };
+		376E4C711541AF6000F38BAA /* CostDatePartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 376E4C701541AF5F00F38BAA /* CostDatePartView.xib */; };
+		376E4C731541AFBF00F38BAA /* LocationDatePartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 376E4C721541AFBE00F38BAA /* LocationDatePartView.xib */; };
 		3772367F152DE2DE0075B6A7 /* SuperTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3772367E152DE2DE0075B6A7 /* SuperTabBarController.m */; };
 		37A44164152285E1004FBBEB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A44163152285E1004FBBEB /* CoreLocation.framework */; };
 		37AC5A791522362000343E1F /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 37AC5A781522362000343E1F /* AppIcon.png */; };
@@ -186,6 +190,11 @@
 		376DA99315194633009BD121 /* Scroll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Scroll.png; sourceTree = "<group>"; };
 		376DA9A1151A56DE009BD121 /* GFNavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFNavView.h; sourceTree = "<group>"; };
 		376DA9A2151A56DE009BD121 /* GFNavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFNavView.m; sourceTree = "<group>"; };
+		376E4C641540FD6800F38BAA /* TimeNameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeNameView.h; sourceTree = "<group>"; };
+		376E4C651540FD6800F38BAA /* TimeNameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeNameView.m; sourceTree = "<group>"; };
+		376E4C6E1541AEB600F38BAA /* ThemeDatePartView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThemeDatePartView.xib; sourceTree = "<group>"; };
+		376E4C701541AF5F00F38BAA /* CostDatePartView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CostDatePartView.xib; sourceTree = "<group>"; };
+		376E4C721541AFBE00F38BAA /* LocationDatePartView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationDatePartView.xib; sourceTree = "<group>"; };
 		3772367D152DE2DE0075B6A7 /* SuperTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperTabBarController.h; sourceTree = "<group>"; };
 		3772367E152DE2DE0075B6A7 /* SuperTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperTabBarController.m; sourceTree = "<group>"; };
 		37A44163152285E1004FBBEB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -549,6 +558,11 @@
 				3715AE09152275ED00D2861B /* DollarsView.m */,
 				37AC5A7D15223A3500343E1F /* CreateDateController.h */,
 				37AC5A7E15223A3500343E1F /* CreateDateController.m */,
+				376E4C641540FD6800F38BAA /* TimeNameView.h */,
+				376E4C651540FD6800F38BAA /* TimeNameView.m */,
+				376E4C6E1541AEB600F38BAA /* ThemeDatePartView.xib */,
+				376E4C701541AF5F00F38BAA /* CostDatePartView.xib */,
+				376E4C721541AFBE00F38BAA /* LocationDatePartView.xib */,
 				371A1F58153DC86000E8598B /* ThemeButton.h */,
 				371A1F59153DC86000E8598B /* ThemeButton.m */,
 				37F3A72F1533CEAA000A96A5 /* ThemeItem.h */,
@@ -842,6 +856,9 @@
 				371A1F54153C8EB800E8598B /* Heart_Liked@2x.png in Resources */,
 				371A1F55153C8EB800E8598B /* Heart_NotLiked.png in Resources */,
 				371A1F56153C8EB800E8598B /* Heart_NotLiked@2x.png in Resources */,
+				376E4C6F1541AEB700F38BAA /* ThemeDatePartView.xib in Resources */,
+				376E4C711541AF6000F38BAA /* CostDatePartView.xib in Resources */,
+				376E4C731541AFBF00F38BAA /* LocationDatePartView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -871,6 +888,7 @@
 				37F3A7311533CEAA000A96A5 /* ThemeItem.m in Sources */,
 				371141911534E35100B00251 /* UsernameController.m in Sources */,
 				371A1F5A153DC86100E8598B /* ThemeButton.m in Sources */,
+				376E4C661540FD6800F38BAA /* TimeNameView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,6 +18,5 @@
 
 + (Giraffe *) app;
 + (void) kickstart;
-+ (NSString *) timeAgo: (NSDate *) date;
 
 @end

@@ -10,7 +10,7 @@
 
 @class PFObject;
 
-@interface DetailedDateController : UIViewController
+@interface DetailedDateController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) PFObject *date;
 

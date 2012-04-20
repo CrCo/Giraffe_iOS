@@ -14,7 +14,9 @@
 
 - (id)init: (NSString *)title;
 
-@property (nonatomic, readonly) UIButton *button;
+- (UIImage *) image;
+- (UIImage *) selectedImage;
+
 @property (nonatomic, strong) NSString *title;
 
 @end

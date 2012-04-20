@@ -12,7 +12,7 @@
 
 @implementation DateInfoCell
 
-@synthesize timeLabel, username, userImage, description, date=_date, imageBorderView;
+@synthesize timeName, userImage, description, date=_date, imageBorderView;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -49,9 +49,9 @@
     PFUser * user = [aDate objectForKey:@"user"];
     [user fetchIfNeeded];
     
-    self.username.text = user.username;
     self.description.text = [aDate objectForKey:@"description"];
-    self.timeLabel.text = [Giraffe timeAgo:aDate.createdAt];
+    [self.timeName setName:user.username];
+    [self.timeName setDate:aDate.createdAt];
     
     PFFile *serializedImage = [user objectForKey:@"image"];
     if (serializedImage)

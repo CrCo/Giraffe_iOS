@@ -22,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *characterCountLabel;
 @property (weak, nonatomic) IBOutlet UIView *themesPanel;
 @property (weak, nonatomic) IBOutlet UIScrollView *themesScroller;
-@property (strong, nonatomic) UIButton *nextThemeImageView;
+@property (strong, nonatomic) UIImageView *nextThemeImageView;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
 @property (weak, nonatomic) IBOutlet DollarsView *costView;
 @property (weak, nonatomic) IBOutlet UISlider *costSlider;
@@ -92,7 +92,7 @@
     self.themesScroller.contentSize = CGSizeMake(self.themes.count *themeSize, themeSize);
     
     self.themeSideLength = CGRectGetHeight(self.themesPanel.frame);
-    self.nextThemeImageView = [[UIButton alloc] initWithFrame:CGRectMake(-self.themeSideLength - EXTRA_DISTANCE, 0, self.themeSideLength, self.themeSideLength)];
+    self.nextThemeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(-self.themeSideLength - EXTRA_DISTANCE, 0, self.themeSideLength, self.themeSideLength)];
     [self.themesPanel addSubview:self.nextThemeImageView];
     [self setCharaterCount: self.descriptionTextView.text.length];
     [self.costView updateView:self.costSlider.value];
@@ -161,8 +161,7 @@
         [self.selectedThemes removeObject:theme];
 
         //Change the visual elements
-        //+ 1 because of the secret base element
-        UIButton *selectedThemeView = [self.themesPanel.subviews objectAtIndex:indexOfTheme];
+        UIImageView *selectedThemeView = [self.themesPanel.subviews objectAtIndex:indexOfTheme];
 
         //If we are removing the last one, we need to set the nextThemeView pointer one element back
         if (self.nextThemeImageView == selectedThemeView)
@@ -197,7 +196,7 @@
         [self.selectedThemes addObject:theme];
         CGFloat nextX = CGRectGetMaxX(self.nextThemeImageView.frame) + EXTRA_DISTANCE;
         //Create a new button
-        self.nextThemeImageView = theme.button; 
+        self.nextThemeImageView = [[UIImageView alloc] initWithImage:theme.image]; 
         self.nextThemeImageView.frame = CGRectMake(nextX, 0, self.themeSideLength, self.themeSideLength);
         self.nextThemeImageView.alpha = 0.0;
         [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{

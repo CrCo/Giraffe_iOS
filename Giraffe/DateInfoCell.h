@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "TimeNameView.h"
 
 @interface DateInfoCell : UITableViewCell
 
 @property (nonatomic, weak) IBOutlet UILabel *description;
 @property (nonatomic, weak) IBOutlet UIImageView *userImage;
-@property (nonatomic, weak) IBOutlet UILabel *username;
-@property (nonatomic, weak) IBOutlet UILabel *timeLabel;
 @property (nonatomic, weak) IBOutlet UIView *imageBorderView;
+@property (nonatomic, weak) IBOutlet TimeNameView *timeName;
 
 - (IBAction)toggleLike:(UIButton *)sender;
 

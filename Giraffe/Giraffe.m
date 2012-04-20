@@ -55,44 +55,4 @@ static Giraffe *app;
     app = [[Giraffe alloc] init];
 }
 
-+ (NSString *) timeAgo: (NSDate *) aDate
-{
-    // Get the system calendar
-    NSCalendar *sysCalendar = [NSCalendar currentCalendar];
-    
-    // Get conversion to months, days, hours, minutes
-    unsigned int unitFlags = NSSecondCalendarUnit| NSHourCalendarUnit | NSMinuteCalendarUnit | NSDayCalendarUnit | NSWeekCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit;
-    
-    NSDateComponents *components = [sysCalendar  components:unitFlags fromDate:aDate  toDate:[[NSDate alloc] init]  options:0];
-    
-    if (components.year > 0)
-    {
-        return [NSString stringWithFormat: @"%d years ago", components.year];
-    }
-    else if(components.month > 0)
-    {
-        return [NSString stringWithFormat: @"%d months ago", components.month];
-    }
-    else if(components.week > 0)
-    {
-        return [NSString stringWithFormat: @"%d weeks ago", components.week];
-    }
-    else if(components.day > 0)
-    {
-        return [NSString stringWithFormat: @"%dd ago", components.day];
-    }
-    else if(components.hour > 0)
-    {
-        return [NSString stringWithFormat: @"%dh ago", components.hour];
-    }
-    else if(components.hour > 0)
-    {
-        return [NSString stringWithFormat: @"%dm ago", components.minute];
-    }
-    else
-    {
-        return @"Mere seconds ago";
-    }
-}
-
 @end
