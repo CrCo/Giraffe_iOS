@@ -41,6 +41,7 @@ CGPoint lastPoint;
         self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Something" image:[UIImage imageNamed:@"PopularDates"] tag:1];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addDate:) name: GFCreatedDate object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addDate:) name:GFChangePic object:nil];
     }   
     return self;
 }

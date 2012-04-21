@@ -19,6 +19,7 @@
 @interface ThemeButton : UIView
 
 @property (nonatomic, strong) ThemeItem *theme;
+@property (nonatomic) BOOL selected;
 @property (nonatomic, weak) id<ThemeButtonDelegate> delegate;
 
 @end

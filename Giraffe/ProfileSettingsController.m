@@ -14,12 +14,14 @@
 @interface ProfileSettingsController ()
 @property (weak, nonatomic) IBOutlet UIImageView *myPicture;
 @property (weak, nonatomic) IBOutlet UIView *ImageBorderView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *imageSpinner;
 
 @end
 
 @implementation ProfileSettingsController
 @synthesize myPicture;
 @synthesize ImageBorderView;
+@synthesize imageSpinner;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,6 +50,7 @@
 {
     [self setMyPicture:nil];
     [self setImageBorderView:nil];
+    [self setImageSpinner:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -84,16 +87,23 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
 {
-    self.myPicture.image = image;
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(80, 80), NO, 0.0);
-    [image drawInRect:CGRectMake(0, 0, 80, 80)];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();    
+    UIGraphicsBeginImageContextWithOptions(self.myPicture.frame.size, NO, 0.0);
+    [image drawInRect:self.myPicture.frame];
+    self.myPicture.image = UIGraphicsGetImageFromCurrentImageContext();    
     UIGraphicsEndImageContext();
+    self.myPicture.alpha = 0.0;
+    [self.imageSpinner startAnimating];
     
-    PFFile *serializedImage = [PFFile fileWithData:UIImagePNGRepresentation(newImage)];
-    [serializedImage save];
-    [[PFUser currentUser] setObject:serializedImage forKey:@"image"];
-    [[PFUser currentUser] save];
+    PFFile *serializedImage = [PFFile fileWithData:UIImagePNGRepresentation(self.myPicture.image)];
+    [serializedImage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [[PFUser currentUser] setObject:serializedImage forKey:@"image"];
+        [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            self.myPicture.alpha = 1.0;
+            [self.imageSpinner stopAnimating];
+
+            [[NSNotificationCenter defaultCenter] postNotificationName:GFChangePic object:nil];
+        }];
+    }];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

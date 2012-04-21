@@ -51,6 +51,16 @@
     return self;
 }
 
+- (void)setSelected:(BOOL)selected
+{
+    self.icon.highlighted = selected;
+}
+
+- (BOOL)selected
+{
+    return self.icon.highlighted;
+}
+
 - (void)setTheme:(ThemeItem *)theme
 {
     _theme = theme;
@@ -61,7 +71,7 @@
 
 - (void) buttonPressed: (id) sender
 {
-    self.icon.highlighted = [self.delegate themeButtonPressed:self.theme];
+    self.selected = [self.delegate themeButtonPressed:self.theme];
 }
 
 @end
