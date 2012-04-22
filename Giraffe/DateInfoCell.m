@@ -47,17 +47,21 @@
 {
     _date = aDate;
     PFUser * user = [aDate objectForKey:@"user"];
-    [user fetchIfNeeded];
+    [user fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        [self.timeName setName:user.username];
+        PFFile *serializedImage = [user objectForKey:@"image"];
+        if (serializedImage)
+        {
+            NSLog(@"Is the image for %@ already in memory? %d", user.username, serializedImage.isDataAvailable);
+            [serializedImage getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                self.userImage.image = [UIImage imageWithData:data];
+            }];
+        }
+    }];
     
     self.description.text = [aDate objectForKey:@"description"];
-    [self.timeName setName:user.username];
     [self.timeName setDate:aDate.createdAt];
     
-    PFFile *serializedImage = [user objectForKey:@"image"];
-    if (serializedImage)
-    {
-        self.userImage.image = [UIImage imageWithData:[serializedImage getData]];
-    }
 }
 
 @end

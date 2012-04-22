@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *myPicture;
 @property (weak, nonatomic) IBOutlet UIView *ImageBorderView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *imageSpinner;
+- (IBAction)logout:(id)sender;
 
 @end
 
@@ -105,6 +106,12 @@
         }];
     }];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)logout:(id)sender
+{
+    UIViewController *tutorial = [[UIStoryboard storyboardWithName:@"Tutorial" bundle:nil] instantiateInitialViewController];
+    [self presentViewController:tutorial animated:NO completion:nil];
 }
 
 @end
