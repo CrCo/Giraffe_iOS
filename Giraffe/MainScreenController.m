@@ -20,10 +20,13 @@
 @property (strong, nonatomic) NSArray *listOfDates;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+- (IBAction)postNewDate:(id)sender;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
 @end
 
 @implementation MainScreenController
+@synthesize segmentedControl;
 @synthesize tableView;
 @synthesize spinner;
 
@@ -51,11 +54,6 @@ CGPoint lastPoint;
     [self updateDates];
 }
 
-- (void) search: (id) sender
-{
-    
-}
-
 - (void) updateDates
 {
     self.tableView.hidden = YES;
@@ -78,8 +76,11 @@ CGPoint lastPoint;
     [super viewDidLoad];
     [self updateDates];
     
-//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"TopBarWShadow"] forBarMetrics:UIBarMetricsDefault];
-//    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TopBarLogo"]];
+//    UIColor *darkGrey = [UIColor colorWithRed:0.1992 green:0.1992 blue:0.1992 alpha:1.0];
+    UIColor *otherColor = [UIColor colorWithRed:0.9453 green:0.9219 blue:0.1758 alpha:1.0];
+    [self.segmentedControl setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor blackColor], UITextAttributeTextColor, otherColor, UITextAttributeTextShadowColor, [NSValue valueWithUIOffset:UIOffsetMake(0, 1)], UITextAttributeTextShadowOffset, nil] forState:UIControlStateNormal];
+    [self.segmentedControl setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor blackColor], UITextAttributeTextColor, otherColor, UITextAttributeTextShadowColor,[NSValue valueWithUIOffset:UIOffsetMake(0, 1)], UITextAttributeTextShadowOffset, nil] forState:UIControlStateSelected];
+
     
     if (![PFUser currentUser])
     {
@@ -92,6 +93,7 @@ CGPoint lastPoint;
 {
     [self setTableView:nil];
     [self setSpinner:nil];
+    [self setSegmentedControl:nil];
     [super viewDidUnload];
 }
 
@@ -130,4 +132,8 @@ CGPoint lastPoint;
     [self.tableView cellForRowAtIndexPath: self.tableView.indexPathForSelectedRow].selected = NO;
 }
 
+- (IBAction)postNewDate:(id)sender {
+    UIViewController *makeDateController = [[UIStoryboard storyboardWithName:@"MakeDate" bundle:nil] instantiateInitialViewController];
+    [self presentModalViewController:makeDateController animated:YES];
+}
 @end

@@ -31,6 +31,7 @@
 
 @property (nonatomic) NSInteger themeSideLength;
 - (IBAction)createObj:(id)sender;
+- (IBAction)cancel:(id)sender;
 
 - (IBAction) changeCost:(id)sender;
 
@@ -130,21 +131,6 @@
     return newArray;
 }
 
-- (void) clearFields
-{
-    [self.costSlider setValue:2.5];
-    [self.costView setCost:2.5];
-    [self.selectedThemes removeAllObjects];
-    for (ThemeButton *button in self.themesScroller.subviews)
-    {
-        button.selected = NO;
-    }
-    [self removeAllThemeIcons];
-    
-    self.descriptionTextView.text = @"";
-    [self setCharaterCount:0];
-}
-
 - (IBAction) createObj:(id)sender {
     PFObject *testObject = [PFObject objectWithClassName:@"Date"];
     [testObject setObject:[NSNumber numberWithFloat:self.costSlider.value] forKey:@"cost"];
@@ -161,20 +147,14 @@
     {
         [[[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"Error: %@", error.localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
     }
-    [self clearFields];
     [[NSNotificationCenter defaultCenter] postNotificationName:GFCreatedDate object:testObject];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
-
-- (void) removeAllThemeIcons
-{
-    self.nextThemeImageView = [self.themesPanel.subviews objectAtIndex:0];
-    for (int i = 1; i < self.themesPanel.subviews.count; i++)
-    {
-        UIImageView *view = [self.themesPanel.subviews objectAtIndex:i];
-        [view removeFromSuperview];
-    }
+- (IBAction)cancel:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
 }
+
 
 - (void) removeThemeIcon: (NSUInteger) index
 {

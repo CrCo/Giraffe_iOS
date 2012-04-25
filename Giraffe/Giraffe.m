@@ -35,6 +35,10 @@ static Giraffe *app;
         //Start our GeoLocation Handler
         self.handler = [[GeoLocationHandler alloc] init];
         self.handler.delegate = self;        
+        
+        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavBar.png"] forBarMetrics:UIBarMetricsDefault];
+        [[UISearchBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavBar.png"]];
+
     }
     return self;
 }

@@ -29,12 +29,12 @@
 {
     self = [super init];
     if (self) {
-        UIViewController *make = [[UIStoryboard storyboardWithName:@"MakeDate" bundle:nil] instantiateInitialViewController];
-        [self addChildViewController:make];
         self.main = [[UIStoryboard storyboardWithName:@"MainScreen" bundle:nil] instantiateInitialViewController];
         [self addChildViewController:self.main];
         UIViewController *profile = [[UIStoryboard storyboardWithName:@"Profile" bundle:nil] instantiateInitialViewController];
         [self addChildViewController:profile];
+        UIViewController *make = [[UIStoryboard storyboardWithName:@"Search" bundle:nil] instantiateInitialViewController];
+        [self addChildViewController:make];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newDate:) name:GFCreatedDate object:nil];
         
@@ -52,7 +52,7 @@
 {
     [super viewDidLoad];
     
-    self.currentController= [self.childViewControllers objectAtIndex:1];
+    self.currentController= [self.childViewControllers objectAtIndex:0];
     [self.view addSubview:self.currentController.view];
     [self.currentController didMoveToParentViewController:self];
     

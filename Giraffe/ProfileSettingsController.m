@@ -110,6 +110,7 @@
 
 - (IBAction)logout:(id)sender
 {
+    [PFUser logOut];
     UIViewController *tutorial = [[UIStoryboard storyboardWithName:@"Tutorial" bundle:nil] instantiateInitialViewController];
     [self presentViewController:tutorial animated:NO completion:nil];
 }
