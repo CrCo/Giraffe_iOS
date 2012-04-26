@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *currentPicture;
 @property (weak, nonatomic) IBOutlet UIView *pictureFrame;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+@property (weak, nonatomic) IBOutlet UILabel *warningLabel;
 
 - (void)selectImage:(id)sender;
 
@@ -27,6 +28,7 @@
 @synthesize currentPicture;
 @synthesize pictureFrame;
 @synthesize spinner;
+@synthesize warningLabel;
 @synthesize prompt;
 @synthesize username;
 
@@ -71,6 +73,7 @@
     [self setCurrentPicture:nil];
     [self setPictureFrame:nil];
     [self setSpinner:nil];
+    [self setWarningLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -130,6 +133,23 @@
 {
     UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Camera", @"Library", nil];
     [sheet showInView:self.view];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSUInteger characterCount = NSUnionRange(NSMakeRange(0, [textField.text length]), range).length;
+    
+    if (characterCount < 3)
+    {
+        self.warningLabel.text = @"Username is too short";
+        return NO;
+    }
+    if (characterCount > 18)
+    {
+        self.warningLabel.text = @"Username cannot be longer than 18 characters";
+        return NO;
+    }
+    return YES;
 }
 
 
