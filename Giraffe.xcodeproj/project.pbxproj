@@ -53,6 +53,10 @@
 		379A04E91548417700516CB5 /* ProfileHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 379A04E81548417600516CB5 /* ProfileHeaderView.m */; };
 		379A04EC1548470C00516CB5 /* ProfileHeaderButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 379A04EB1548470C00516CB5 /* ProfileHeaderButton.m */; };
 		379A04EF1548968C00516CB5 /* MyDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 379A04EE1548968C00516CB5 /* MyDateCell.m */; };
+		379A04FE1549C5E600516CB5 /* NEWBY+.png in Resources */ = {isa = PBXBuildFile; fileRef = 379A04FC1549C5E600516CB5 /* NEWBY+.png */; };
+		379A04FF1549C5E600516CB5 /* NEWBY+@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 379A04FD1549C5E600516CB5 /* NEWBY+@2x.png */; };
+		379A05021549C9B900516CB5 /* hotdog.png in Resources */ = {isa = PBXBuildFile; fileRef = 379A05001549C9B900516CB5 /* hotdog.png */; };
+		379A05031549C9B900516CB5 /* hotdog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 379A05011549C9B900516CB5 /* hotdog@2x.png */; };
 		37A44164152285E1004FBBEB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A44163152285E1004FBBEB /* CoreLocation.framework */; };
 		37AC5A791522362000343E1F /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 37AC5A781522362000343E1F /* AppIcon.png */; };
 		37AC5A7C1522364600343E1F /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37AC5A7B1522364600343E1F /* AppIcon@2x.png */; };
@@ -246,6 +250,10 @@
 		379A04EB1548470C00516CB5 /* ProfileHeaderButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileHeaderButton.m; sourceTree = "<group>"; };
 		379A04ED1548968B00516CB5 /* MyDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDateCell.h; sourceTree = "<group>"; };
 		379A04EE1548968C00516CB5 /* MyDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDateCell.m; sourceTree = "<group>"; };
+		379A04FC1549C5E600516CB5 /* NEWBY+.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NEWBY+.png"; sourceTree = "<group>"; };
+		379A04FD1549C5E600516CB5 /* NEWBY+@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NEWBY+@2x.png"; sourceTree = "<group>"; };
+		379A05001549C9B900516CB5 /* hotdog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hotdog.png; sourceTree = "<group>"; };
+		379A05011549C9B900516CB5 /* hotdog@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hotdog@2x.png"; sourceTree = "<group>"; };
 		37A44163152285E1004FBBEB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		37AC5A781522362000343E1F /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AppIcon.png; path = ../AppIcon.png; sourceTree = "<group>"; };
 		37AC5A7B1522364600343E1F /* AppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AppIcon@2x.png"; path = "../AppIcon@2x.png"; sourceTree = "<group>"; };
@@ -688,6 +696,10 @@
 		37FB6F001514309B0012AF79 /* Common UI */ = {
 			isa = PBXGroup;
 			children = (
+				379A05001549C9B900516CB5 /* hotdog.png */,
+				379A05011549C9B900516CB5 /* hotdog@2x.png */,
+				379A04FC1549C5E600516CB5 /* NEWBY+.png */,
+				379A04FD1549C5E600516CB5 /* NEWBY+@2x.png */,
 				379A04CB1547109600516CB5 /* searchbutton.png */,
 				379A04CC1547109600516CB5 /* searchbutton@2x.png */,
 				379A04BB15470BD900516CB5 /* repost-lit.png */,
@@ -948,6 +960,10 @@
 				379A04E21547170A00516CB5 /* X@2x.png in Resources */,
 				379A04E515471A3000516CB5 /* AdddateBackground.png in Resources */,
 				379A04E615471A3000516CB5 /* AdddateBackground@2x.png in Resources */,
+				379A04FE1549C5E600516CB5 /* NEWBY+.png in Resources */,
+				379A04FF1549C5E600516CB5 /* NEWBY+@2x.png in Resources */,
+				379A05021549C9B900516CB5 /* hotdog.png in Resources */,
+				379A05031549C9B900516CB5 /* hotdog@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

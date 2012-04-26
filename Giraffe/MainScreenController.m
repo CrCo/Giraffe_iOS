@@ -14,6 +14,8 @@
 #import "DetailedDateController.h"
 #import "Giraffe.h"
 
+#define BUTTON_SIZE 31
+
 @interface MainScreenController ()
 
 @property (strong, nonatomic) NSArray *listOfDates;
@@ -75,7 +77,6 @@ CGPoint lastPoint;
     [super viewDidLoad];
     [self updateDates];
     
-//    UIColor *darkGrey = [UIColor colorWithRed:0.1992 green:0.1992 blue:0.1992 alpha:1.0];
     UIColor *otherColor = [UIColor colorWithRed:0.9453 green:0.9219 blue:0.1758 alpha:1.0];
     [self.segmentedControl setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor blackColor], UITextAttributeTextColor, otherColor, UITextAttributeTextShadowColor, [NSValue valueWithUIOffset:UIOffsetMake(0, 1)], UITextAttributeTextShadowOffset, nil] forState:UIControlStateNormal];
     [self.segmentedControl setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor blackColor], UITextAttributeTextColor, otherColor, UITextAttributeTextShadowColor,[NSValue valueWithUIOffset:UIOffsetMake(0, 1)], UITextAttributeTextShadowOffset, nil] forState:UIControlStateSelected];    
@@ -87,6 +88,31 @@ CGPoint lastPoint;
     }
     //We should block here until the current user is loaded since we will need it everywhere
     [[PFUser currentUser] fetchIfNeeded];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:[UIImage imageNamed:@"NEWBY+"] forState:UIControlStateNormal];
+    button.frame = CGRectMake(0, 0, BUTTON_SIZE, BUTTON_SIZE);
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
+    
+    NSArray *segmentControlTitles = [NSArray arrayWithObjects:@"Popular", @"Following", nil] ;
+
+    UIImage* dividerImage = [UIImage imageNamed:@"HangBar"];
+        
+    UIColor *shadowColor = [UIColor colorWithRed:1.0 green:0.8431 blue:0.302 alpha:1.0];
+    UIColor *textColor = [UIColor colorWithWhite:0.19 alpha:1.0];
+
+    UISegmentedControl *control = [[UISegmentedControl alloc] initWithItems:segmentControlTitles];
+    
+    NSDictionary *textAttributes = [NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"appetite" size:12], UITextAttributeFont, textColor,UITextAttributeTextColor, shadowColor, UITextAttributeTextShadowColor, UIOffsetMake(0, 1),  UITextAttributeTextShadowOffset, nil];
+    
+    [control setTitleTextAttributes:textAttributes forState:UIControlStateNormal];
+    
+    UIImage *image = [[UIImage imageNamed:@"hotdog"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)];
+    
+    [control setBackgroundImage:image forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [control setDividerImage:dividerImage forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    self.navigationItem.titleView = control;
 }
 
 - (void)viewDidUnload

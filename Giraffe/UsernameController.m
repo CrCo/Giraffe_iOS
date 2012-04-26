@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIView *pictureFrame;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (weak, nonatomic) IBOutlet UILabel *warningLabel;
+@property (weak, nonatomic) IBOutlet UIButton *okButton;
 
 - (void)selectImage:(id)sender;
 
@@ -29,6 +30,7 @@
 @synthesize pictureFrame;
 @synthesize spinner;
 @synthesize warningLabel;
+@synthesize okButton;
 @synthesize prompt;
 @synthesize username;
 
@@ -45,6 +47,8 @@
 {
     [super viewDidLoad];
     
+    [self.username becomeFirstResponder];
+        
     [self.currentPicture addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectImage:)]];
 
     self.prompt.font = [UIFont fontWithName:@"appetite" size:18.0];
@@ -74,6 +78,7 @@
     [self setPictureFrame:nil];
     [self setSpinner:nil];
     [self setWarningLabel:nil];
+    [self setOkButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -84,11 +89,22 @@
 }
 
 - (IBAction)onDone:(id)sender {
-    [PFUser currentUser].username = self.username.text;
-    [[PFUser currentUser] saveInBackground];
-    [[NSNotificationCenter defaultCenter] postNotificationName:GFChangePic object:nil];
+    NSUInteger usernameLength = [self.username.text length];
+    
+    if (usernameLength > 3 && usernameLength < 18)
+    {
+        [PFUser currentUser].username = self.username.text;
+        [[PFUser currentUser] saveInBackground];
+        [[NSNotificationCenter defaultCenter] postNotificationName:GFChangePic object:nil];
 
-    [self dismissModalViewControllerAnimated:YES];
+        [self dismissModalViewControllerAnimated:YES];
+    }
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+    NSUInteger usernameLength = [self.username.text length];
+    return usernameLength > 3 && usernameLength < 18;
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -137,18 +153,24 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    NSUInteger characterCount = NSUnionRange(NSMakeRange(0, [textField.text length]), range).length;
-    
+    NSUInteger characterCount = [textField.text length] + [string length] - range.length;
+        
     if (characterCount < 3)
     {
         self.warningLabel.text = @"Username is too short";
-        return NO;
+        self.okButton.enabled = NO;
     }
-    if (characterCount > 18)
+    else if (characterCount > 18)
     {
         self.warningLabel.text = @"Username cannot be longer than 18 characters";
-        return NO;
+        self.okButton.enabled = NO;
     }
+    else 
+    {
+        self.warningLabel.text = @"";
+        self.okButton.enabled = YES;
+    }
+    
     return YES;
 }
 

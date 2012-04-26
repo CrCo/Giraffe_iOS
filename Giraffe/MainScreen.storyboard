@@ -115,16 +115,10 @@
                             <rect key="frame" x="89" y="7" width="141" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
-                                <segment title="Popular"/>
+                                <segment title=""/>
                                 <segment title="Following"/>
                             </segments>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="5bx-ov-vhd">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="postNewDate:" destination="EtN-JN-tnY" id="BUV-cO-EQK"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="segmentedControl" destination="mVM-TA-ljb" id="m9C-oo-RwY"/>

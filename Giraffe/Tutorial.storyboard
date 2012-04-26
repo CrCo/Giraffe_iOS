@@ -67,7 +67,7 @@
         <scene sceneID="3yQ-E0-7on">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c4x-8x-r6F" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="409-f6-GHx" customClass="LoginController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="login" id="409-f6-GHx" customClass="LoginController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D0f-jg-aLv">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -141,7 +141,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
-                                    <action selector="onDone:" destination="IO0-oV-mZH" eventType="editingDidEndOnExit" id="x23-Mx-Tzs"/>
+                                    <action selector="onDone:" destination="IO0-oV-mZH" eventType="editingDidEndOnExit" id="DPR-kw-DiM"/>
                                     <outlet property="delegate" destination="IO0-oV-mZH" id="Bv5-MJ-mY0"/>
                                 </connections>
                             </textField>
@@ -183,8 +183,8 @@
                                     <action selector="onDone:" destination="IO0-oV-mZH" eventType="touchUpInside" id="zbI-kI-BmV"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="XmU-r1-sGp">
-                                <rect key="frame" x="25" y="224" width="210" height="12"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="XmU-r1-sGp">
+                                <rect key="frame" x="25" y="231" width="210" height="12"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" red="0.83529412749999998" green="0.17343833480000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -196,6 +196,7 @@
                     <navigationItem key="navigationItem" id="5TN-WI-mf6"/>
                     <connections>
                         <outlet property="currentPicture" destination="4Wa-D7-p4f" id="r1y-HC-MiT"/>
+                        <outlet property="okButton" destination="Dhy-gi-34h" id="cQO-ap-wpZ"/>
                         <outlet property="pictureFrame" destination="jul-YT-V3J" id="7Ii-TK-oyj"/>
                         <outlet property="prompt" destination="mNF-oG-cyk" id="N77-3C-Uvd"/>
                         <outlet property="spinner" destination="nk9-yO-wLN" id="JCd-l9-vNR"/>
@@ -253,6 +254,7 @@
             <relationships>
                 <relationship kind="action" name="onDone:"/>
                 <relationship kind="outlet" name="currentPicture" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="okButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="pictureFrame" candidateClass="UIView"/>
                 <relationship kind="outlet" name="prompt" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>

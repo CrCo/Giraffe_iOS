@@ -82,7 +82,7 @@
     else if (indexPath.section == 1)
     {
         [PFUser logOut];
-        UIViewController *tutorial = [[UIStoryboard storyboardWithName:@"Tutorial" bundle:nil] instantiateInitialViewController];
+        UIViewController *tutorial = [[UIStoryboard storyboardWithName:@"Tutorial" bundle:nil] instantiateViewControllerWithIdentifier:@"login"];
         [self presentViewController:tutorial animated:YES completion:nil];
     }
 }

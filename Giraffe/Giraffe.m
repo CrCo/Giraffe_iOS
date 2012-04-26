@@ -42,9 +42,10 @@ static Giraffe *app;
         [[UISearchBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavBar.png"]];
         
         UIColor *tint = [UIColor colorWithRed:0.996 green:0.711 blue:0.035 alpha:1.0];
-    
+            
         [[UIBarButtonItem appearance] setTintColor:tint];
         [[UISegmentedControl appearance] setTintColor:tint];
+        [[UIButton appearance] setTintColor:tint];
     }
     return self;
 }
