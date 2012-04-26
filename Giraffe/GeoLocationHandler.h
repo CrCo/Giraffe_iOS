@@ -19,4 +19,6 @@
 
 @property (nonatomic, weak) id<GeoLocationHandlerDelegate> delegate;
 
+- (void) start;
+
 @end

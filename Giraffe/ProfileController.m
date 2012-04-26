@@ -7,74 +7,145 @@
 //
 
 #import "ProfileController.h"
+#import <Parse/Parse.h>
+#import "MyDateCell.h"
+#import "Giraffe.h"
 
 @interface ProfileController ()
-@property (weak, nonatomic) IBOutlet UIButton *datesTitleButton;
-@property (weak, nonatomic) IBOutlet UIButton *herdNumberButton;
-@property (weak, nonatomic) IBOutlet UIButton *herdTitleButton;
-@property (weak, nonatomic) IBOutlet UIButton *newsNumberButton;
-@property (weak, nonatomic) IBOutlet UIButton *newsTitleButton;
-@property (weak, nonatomic) IBOutlet UIButton *likedNumberButton;
-@property (weak, nonatomic) IBOutlet UIButton *likedTitleButton;
-@property (weak, nonatomic) IBOutlet UIButton *datesNumberButton;
+{
+    NSMutableDictionary *queryResults;
+    NSString *selectedQuery;
+}
+  
+@property (weak, nonatomic) IBOutlet ProfileHeaderView *header;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @end
 
 @implementation ProfileController
-@synthesize datesTitleButton;
-@synthesize herdNumberButton;
-@synthesize herdTitleButton;
-@synthesize newsNumberButton;
-@synthesize newsTitleButton;
-@synthesize likedNumberButton;
-@synthesize likedTitleButton;
-@synthesize datesNumberButton;
+@synthesize header;
+@synthesize tableView;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
+        queryResults = [NSMutableDictionary dictionaryWithCapacity:4];
+        
         self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Profile" image:[UIImage imageNamed:@"ProfileButton"] tag:2];
+        
+        //When a new date is created, we should update our dates page so this newest date
+        //is reflected
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addDate:) name: GFCreatedDate object:nil];
     }
     return self;
 }
 
-- (void)viewDidLoad
+- (void) addDate: (id) sender
 {
-    [super viewDidLoad];
-    
-    UIFont *font = [UIFont fontWithName:@"appetite" size:30.0];
+    PFQuery *dates = [PFQuery queryWithClassName:@"Date"];
+    [dates whereKey:@"user" equalTo:[PFUser currentUser]];
+    [dates findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        [queryResults setObject:objects forKey:@"dates"];
+        [self.header setNumber:[objects count] forHeader:@"dates"];
+        //If we are currently displaying the dates, we should reload the table
+        if ([selectedQuery isEqualToString:@"dates"])
+        {
+            [self.tableView reloadData];
+        }
+    }];
+}
 
-    self.datesNumberButton.titleLabel.font = font;
-    self.herdNumberButton.titleLabel.font = font;
-    self.newsNumberButton.titleLabel.font = font;
-    self.likedNumberButton.titleLabel.font = font;
+- (void)didPressButton:(NSString *)title
+{
+    [self.header selectHeader:title];
+    selectedQuery = title;
+    [self.tableView reloadData];
+}
 
-    font = [UIFont fontWithName:@"appetite" size:14.0];    
-    self.herdTitleButton.titleLabel.font = font;
-    self.newsTitleButton.titleLabel.font = font;
-    self.datesTitleButton.titleLabel.font = font;
-    self.likedTitleButton.titleLabel.font = font;
+- (void)viewDidLoad
+{    
+    self.header.delegate = self;
+    [self.header addHeader:@"dates"];
+    [self.header addHeader:@"herd"];
+    [self.header addHeader:@"news"];
+    [self.header addHeader:@"liked"];
     
+    PFQuery *dates = [PFQuery queryWithClassName:@"Date"];
+    [dates whereKey:@"user" equalTo:[PFUser currentUser]];
+    [dates findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        [queryResults setObject:objects forKey:@"dates"];
+        [self.header setNumber:[objects count] forHeader:@"dates"];
+        selectedQuery = @"dates";
+        [self.tableView reloadData];
+        [self.header selectHeader:@"dates"];
+    }];
     
-    self.datesNumberButton.selected = YES;
-    self.datesTitleButton.selected = YES;
+    NSArray *following = [[PFUser currentUser] objectForKey:@"following"];
+    if (following)
+    {
+        [queryResults setObject:following forKey:@"herd"];
+        [self.header setNumber:[following count] forHeader:@"herd"];
+    }
     
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"TopBarWShadow"] forBarMetrics:UIBarMetricsDefault];
+    PFQuery *news = [PFQuery queryWithClassName:@"NewsItem"];
+    [news findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        [queryResults setObject:objects forKey:@"news"];
+        [self.header setNumber:[objects count] forHeader:@"news"];
+    }];
+
+    NSArray *likes = [[PFUser currentUser] objectForKey:@"likes"];
+    [queryResults setObject:likes forKey:@"liked"];
+    [self.header setNumber:[likes count] forHeader:@"liked"];
+    
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TopBarLogo"]];
+    
+    [super viewDidLoad];
 }
 
 - (void)viewDidUnload
 {
-    [self setDatesNumberButton:nil];
-    [self setDatesTitleButton:nil];
-    [self setHerdNumberButton:nil];
-    [self setHerdTitleButton:nil];
-    [self setNewsNumberButton:nil];
-    [self setNewsTitleButton:nil];
-    [self setLikedNumberButton:nil];
-    [self setLikedTitleButton:nil];
+    [self setHeader:nil];
+    [self setTableView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (selectedQuery)
+    {
+        NSArray *objects = [queryResults objectForKey:selectedQuery];
+        if (objects)
+        {
+            return [objects count];
+        }
+    }
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([selectedQuery isEqualToString:@"dates"])
+    {
+        MyDateCell *cell = [self.tableView dequeueReusableCellWithIdentifier:selectedQuery];
+        NSArray *allDates = [queryResults objectForKey:selectedQuery];
+        cell.date = [allDates objectAtIndex:indexPath.row];
+        return cell;        
+    }
+    else if ([selectedQuery isEqualToString:@"liked"])
+    {
+        MyDateCell *cell = [self.tableView dequeueReusableCellWithIdentifier:selectedQuery];
+        NSArray *allDates = [queryResults objectForKey:selectedQuery];
+        cell.date = [allDates objectAtIndex:indexPath.row];
+        return cell;        
+    }
+    return nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

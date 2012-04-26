@@ -19,7 +19,7 @@
 
 @implementation UsernameController
 @synthesize prompt;
-@synthesize username, delegate;
+@synthesize username;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -51,7 +51,10 @@
 }
 
 - (IBAction)onDone:(id)sender {
-    [self.delegate loginControllerFinish:nil];
+    [PFUser currentUser].username = self.username.text;
+    [[PFUser currentUser] saveInBackground];
+    
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 @end

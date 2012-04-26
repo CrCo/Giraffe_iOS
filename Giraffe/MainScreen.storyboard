@@ -81,6 +81,7 @@
                                         <connections>
                                             <outlet property="description" destination="PAQ-Ou-eqo" id="wE0-KI-IUf"/>
                                             <outlet property="imageBorderView" destination="rHD-18-0QE" id="Mwr-zQ-99s"/>
+                                            <outlet property="likeButton" destination="AY5-9j-Cpq" id="OTw-K3-QUy"/>
                                             <outlet property="timeName" destination="Yjv-nG-4ZW" id="8Ic-B3-Svf"/>
                                             <outlet property="userImage" destination="FYd-iF-mU1" id="8ty-AY-x7w"/>
                                             <segue destination="Mmc-Bu-XNK" kind="push" id="imN-iM-d3R"/>
@@ -117,10 +118,9 @@
                                 <segment title="Popular"/>
                                 <segment title="Following"/>
                             </segments>
-                            <color key="tintColor" red="1" green="0.71258167520000004" blue="0.034558936919999998" alpha="1" colorSpace="calibratedRGB"/>
                         </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="5bx-ov-vhd">
-                            <color key="tintColor" red="1" green="0.71258167520000004" blue="0.034558936919999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="postNewDate:" destination="EtN-JN-tnY" id="BUV-cO-EQK"/>
                             </connections>
@@ -249,6 +249,7 @@
                         <outlet property="descriptionText" destination="CdX-fE-DFY" id="iyX-SS-awa"/>
                         <outlet property="image" destination="NSF-sq-dtW" id="ILo-Aj-I6s"/>
                         <outlet property="imageBorderView" destination="9ak-fB-HJo" id="Nqo-NR-m87"/>
+                        <outlet property="likeButton" destination="zdf-Pn-umd" id="2RO-Dt-dIf"/>
                         <outlet property="likedInfoLabel" destination="I17-ke-JWH" id="0nn-L1-Oit"/>
                         <outlet property="tableView" destination="5hT-bK-fwD" id="1ZA-iu-dNL"/>
                         <outlet property="timeName" destination="c9p-4r-bIX" id="q6m-nw-uCP"/>
@@ -266,7 +267,6 @@
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Jgw-FU-fMJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="1" green="0.71258167520000004" blue="0.034558936919999998" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -292,6 +292,7 @@
                 <relationship kind="action" name="toggleLike:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="description" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="imageBorderView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="likeButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="timeName" candidateClass="TimeNameView"/>
                 <relationship kind="outlet" name="userImage" candidateClass="UIImageView"/>
             </relationships>
@@ -305,6 +306,7 @@
                 <relationship kind="outlet" name="descriptionText" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="image" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="imageBorderView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="likeButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="likedInfoLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="locationLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="locationTitleLabel" candidateClass="UILabel"/>

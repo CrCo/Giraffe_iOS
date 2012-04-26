@@ -20,7 +20,6 @@
     [Giraffe kickstart];
     
     // Override point for customization after application launch.
-    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     SuperTabBarController *root = [[SuperTabBarController alloc] init];
     [self.window setRootViewController:root];

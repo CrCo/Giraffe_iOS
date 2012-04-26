@@ -8,7 +8,6 @@
 
 #import "MainScreenController.h"
 #import <QuartzCore/QuartzCore.h>
-#import "RotatingWheel.h"
 #import <Parse/Parse.h>
 #import "GFNavView.h"
 #import "DateInfoCell.h"
@@ -79,14 +78,15 @@ CGPoint lastPoint;
 //    UIColor *darkGrey = [UIColor colorWithRed:0.1992 green:0.1992 blue:0.1992 alpha:1.0];
     UIColor *otherColor = [UIColor colorWithRed:0.9453 green:0.9219 blue:0.1758 alpha:1.0];
     [self.segmentedControl setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor blackColor], UITextAttributeTextColor, otherColor, UITextAttributeTextShadowColor, [NSValue valueWithUIOffset:UIOffsetMake(0, 1)], UITextAttributeTextShadowOffset, nil] forState:UIControlStateNormal];
-    [self.segmentedControl setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor blackColor], UITextAttributeTextColor, otherColor, UITextAttributeTextShadowColor,[NSValue valueWithUIOffset:UIOffsetMake(0, 1)], UITextAttributeTextShadowOffset, nil] forState:UIControlStateSelected];
-
+    [self.segmentedControl setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor blackColor], UITextAttributeTextColor, otherColor, UITextAttributeTextShadowColor,[NSValue valueWithUIOffset:UIOffsetMake(0, 1)], UITextAttributeTextShadowOffset, nil] forState:UIControlStateSelected];    
     
     if (![PFUser currentUser])
     {
         UIViewController *tutorial = [[UIStoryboard storyboardWithName:@"Tutorial" bundle:nil] instantiateInitialViewController];
         [self presentViewController:tutorial animated:NO completion:nil];
     }
+    //We should block here until the current user is loaded since we will need it everywhere
+    [[PFUser currentUser] fetchIfNeeded];
 }
 
 - (void)viewDidUnload

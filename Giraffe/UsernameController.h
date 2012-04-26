@@ -7,10 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LoginController.h"
 
 @interface UsernameController : UIViewController
-
-@property (nonatomic, weak) id<LoginControllerDelegate> delegate;
 
 @end

@@ -34,11 +34,17 @@ static Giraffe *app;
                 
         //Start our GeoLocation Handler
         self.handler = [[GeoLocationHandler alloc] init];
-        self.handler.delegate = self;        
+        self.handler.delegate = self;  
+        [self.handler start];
         
+        //Customize the appearance proxies for relevant objects
         [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavBar.png"] forBarMetrics:UIBarMetricsDefault];
         [[UISearchBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavBar.png"]];
-
+        
+        UIColor *tint = [UIColor colorWithRed:0.996 green:0.711 blue:0.035 alpha:1.0];
+    
+        [[UIBarButtonItem appearance] setTintColor:tint];
+        [[UISegmentedControl appearance] setTintColor:tint];
     }
     return self;
 }

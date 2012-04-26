@@ -12,7 +12,7 @@
 
 @implementation DateInfoCell
 
-@synthesize timeName, userImage, description, date=_date, imageBorderView;
+@synthesize timeName, userImage, description, date=_date, imageBorderView, likeButton;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -31,16 +31,34 @@
 }
 
 - (IBAction)toggleLike:(UIButton *)sender {
-    if (sender.selected)
+    BOOL likedAlready = [((NSArray *)[[PFUser currentUser] objectForKey:@"likes"]) containsObject:self.date];
+    if (likedAlready)
     {
-        [self.date incrementKey:@"likes" byAmount:[NSNumber numberWithInt:-1]];
+        NSMutableArray *likes = [NSMutableArray arrayWithArray:[[PFUser currentUser] objectForKey:@"likes"]];
+        [likes removeObject:self.date];
+        [[PFUser currentUser] setObject:likes forKey:@"likes"];
     }
-    else
+    else 
     {
-        [self.date incrementKey:@"likes"];
+        NSArray *likesArray = [[PFUser currentUser] objectForKey:@"likes"];
+        if (likesArray)
+        {
+            likesArray = [likesArray arrayByAddingObject:self.date];
+        }
+        else
+        {
+            likesArray = [NSArray arrayWithObject:self.date];
+        }
+        
+        [[PFUser currentUser] setObject:likesArray forKey:@"likes"];
     }
-    [self.date saveEventually];
-    sender.selected = !sender.selected;
+    [[PFUser currentUser] saveInBackground];
+    [[NSNotificationCenter defaultCenter] postNotificationName:GFLikeDate object:self.date userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:!likedAlready], @"liked", nil]];
+}
+
+- (void) dateLikeChange: (NSNotification *) sender
+{
+    self.likeButton.selected = ((NSNumber *)[sender.userInfo objectForKey:@"liked"]).boolValue;
 }
 
 - (void)setDate:(PFObject *)aDate
@@ -61,7 +79,8 @@
     
     self.description.text = [aDate objectForKey:@"description"];
     [self.timeName setDate:aDate.createdAt];
-    
+    self.likeButton.selected = [((NSArray *)[[PFUser currentUser] objectForKey:@"likes"]) containsObject:aDate];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dateLikeChange:) name:GFLikeDate object:self.date];
 }
 
 @end

@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LoginController.h"
 
-@interface TutorialViewController : UIViewController <UIScrollViewDelegate, LoginControllerDelegate>
+@interface TutorialViewController : UIViewController <UIScrollViewDelegate>
 
 
 @end

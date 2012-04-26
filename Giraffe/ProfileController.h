@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProfileHeaderView.h"
 
-@interface ProfileController : UIViewController
+@interface ProfileController : UIViewController <ProfileHeaderViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @end

@@ -10,19 +10,17 @@
 #import <Twitter/Twitter.h>
 #import <Accounts/Accounts.h>
 #import "Giraffe.h"
-#import "StyleSettings.h"
 #import <Parse/Parse.h>
 #import "UsernameController.h"
 
 @interface LoginController ()
 
-@property (weak, nonatomic) IBOutlet UIButton *twitterButton;
-@property (weak, nonatomic) IBOutlet UIButton *facebookButton;
+- (IBAction)facebookLogin:(id)sender;
+- (IBAction)twitterLogin:(id)sender;
 
 @end
 
 @implementation LoginController
-@synthesize delegate, twitterButton, facebookButton;
 
 - (id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
@@ -48,21 +46,17 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    UsernameController *cntlr =  (UsernameController *) segue.destinationViewController;
-    if (self.twitterButton == sender)
-    {
-        [PFTwitterUtils logInWithBlock: ^(PFUser *user, NSError *error) {
-        }];
-    }
-    else if (self.facebookButton == sender) 
-    {
-        [PFFacebookUtils logInWithPermissions:[NSArray arrayWithObjects: nil] block:^(PFUser * user, NSError *error) {
-            
-        }];   
-    }
-    cntlr.delegate = self.delegate;
+- (IBAction)facebookLogin:(id)sender {
+    [PFFacebookUtils logInWithPermissions:[NSArray arrayWithObjects: nil] block:^(PFUser * user, NSError *error) {
+        [self performSegueWithIdentifier:@"username" sender:self];
+    }];
 }
 
+- (IBAction)twitterLogin:(id)sender {
+    
+    [PFTwitterUtils logInWithBlock: ^(PFUser *user, NSError *error) {
+        [self performSegueWithIdentifier:@"username" sender:self];
+    }];
+
+}
 @end

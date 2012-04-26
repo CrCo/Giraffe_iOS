@@ -50,6 +50,9 @@
 		379A04E21547170A00516CB5 /* X@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 379A04DE1547170A00516CB5 /* X@2x.png */; };
 		379A04E515471A3000516CB5 /* AdddateBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 379A04E315471A3000516CB5 /* AdddateBackground.png */; };
 		379A04E615471A3000516CB5 /* AdddateBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 379A04E415471A3000516CB5 /* AdddateBackground@2x.png */; };
+		379A04E91548417700516CB5 /* ProfileHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 379A04E81548417600516CB5 /* ProfileHeaderView.m */; };
+		379A04EC1548470C00516CB5 /* ProfileHeaderButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 379A04EB1548470C00516CB5 /* ProfileHeaderButton.m */; };
+		379A04EF1548968C00516CB5 /* MyDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 379A04EE1548968C00516CB5 /* MyDateCell.m */; };
 		37A44164152285E1004FBBEB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A44163152285E1004FBBEB /* CoreLocation.framework */; };
 		37AC5A791522362000343E1F /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 37AC5A781522362000343E1F /* AppIcon.png */; };
 		37AC5A7C1522364600343E1F /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37AC5A7B1522364600343E1F /* AppIcon@2x.png */; };
@@ -143,7 +146,6 @@
 		37CE5F61150A956A007FB05B /* Giraffe.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CE5F58150A956A007FB05B /* Giraffe.m */; };
 		37CE5F62150A956A007FB05B /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CE5F5A150A956A007FB05B /* LoginController.m */; };
 		37CE5F63150A956A007FB05B /* MainScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CE5F5C150A956A007FB05B /* MainScreenController.m */; };
-		37CE5F65150A956A007FB05B /* RotatingWheel.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CE5F5F150A956A007FB05B /* RotatingWheel.m */; };
 		37CE5F67150A95D6007FB05B /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37CE5F66150A95D6007FB05B /* Accounts.framework */; };
 		37CE5F69150A95DC007FB05B /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37CE5F68150A95DC007FB05B /* Twitter.framework */; };
 		37CE5F6B150A9637007FB05B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37CE5F6A150A9637007FB05B /* QuartzCore.framework */; };
@@ -238,6 +240,12 @@
 		379A04DE1547170A00516CB5 /* X@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "X@2x.png"; sourceTree = "<group>"; };
 		379A04E315471A3000516CB5 /* AdddateBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AdddateBackground.png; sourceTree = "<group>"; };
 		379A04E415471A3000516CB5 /* AdddateBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AdddateBackground@2x.png"; sourceTree = "<group>"; };
+		379A04E71548417600516CB5 /* ProfileHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileHeaderView.h; sourceTree = "<group>"; };
+		379A04E81548417600516CB5 /* ProfileHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileHeaderView.m; sourceTree = "<group>"; };
+		379A04EA1548470B00516CB5 /* ProfileHeaderButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileHeaderButton.h; sourceTree = "<group>"; };
+		379A04EB1548470C00516CB5 /* ProfileHeaderButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileHeaderButton.m; sourceTree = "<group>"; };
+		379A04ED1548968B00516CB5 /* MyDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDateCell.h; sourceTree = "<group>"; };
+		379A04EE1548968C00516CB5 /* MyDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDateCell.m; sourceTree = "<group>"; };
 		37A44163152285E1004FBBEB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		37AC5A781522362000343E1F /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AppIcon.png; path = ../AppIcon.png; sourceTree = "<group>"; };
 		37AC5A7B1522364600343E1F /* AppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AppIcon@2x.png"; path = "../AppIcon@2x.png"; sourceTree = "<group>"; };
@@ -356,9 +364,6 @@
 		37CE5F5A150A956A007FB05B /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
 		37CE5F5B150A956A007FB05B /* MainScreenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainScreenController.h; sourceTree = "<group>"; };
 		37CE5F5C150A956A007FB05B /* MainScreenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainScreenController.m; sourceTree = "<group>"; };
-		37CE5F5E150A956A007FB05B /* RotatingWheel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatingWheel.h; sourceTree = "<group>"; };
-		37CE5F5F150A956A007FB05B /* RotatingWheel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatingWheel.m; sourceTree = "<group>"; };
-		37CE5F60150A956A007FB05B /* StyleSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleSettings.h; sourceTree = "<group>"; };
 		37CE5F66150A95D6007FB05B /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		37CE5F68150A95DC007FB05B /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		37CE5F6A150A9637007FB05B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -588,9 +593,6 @@
 				37B3CE90152380FB00C65F0E /* DateInfoCell.m */,
 				376DA9A1151A56DE009BD121 /* GFNavView.h */,
 				376DA9A2151A56DE009BD121 /* GFNavView.m */,
-				37CE5F5E150A956A007FB05B /* RotatingWheel.h */,
-				37CE5F5F150A956A007FB05B /* RotatingWheel.m */,
-				37CE5F60150A956A007FB05B /* StyleSettings.h */,
 				37FB6F29151435110012AF79 /* TutorialViewController.h */,
 				37FB6F2A151435110012AF79 /* TutorialViewController.m */,
 				3772367D152DE2DE0075B6A7 /* SuperTabBarController.h */,
@@ -604,10 +606,16 @@
 				379A04CF154712D600516CB5 /* Search.storyboard */,
 				3711418F1534E35000B00251 /* UsernameController.h */,
 				371141901534E35100B00251 /* UsernameController.m */,
+				379A04ED1548968B00516CB5 /* MyDateCell.h */,
+				379A04EE1548968C00516CB5 /* MyDateCell.m */,
 				37F3A7121533BAB3000A96A5 /* DetailedDateController.h */,
 				37F3A7131533BAB3000A96A5 /* DetailedDateController.m */,
 				3742CAEC1531F69A00B80400 /* ProfileController.h */,
 				3742CAED1531F69A00B80400 /* ProfileController.m */,
+				379A04E71548417600516CB5 /* ProfileHeaderView.h */,
+				379A04E81548417600516CB5 /* ProfileHeaderView.m */,
+				379A04EA1548470B00516CB5 /* ProfileHeaderButton.h */,
+				379A04EB1548470C00516CB5 /* ProfileHeaderButton.m */,
 				37EB79CA1533A80300A3B777 /* ProfileSettingsController.h */,
 				37EB79CB1533A80300A3B777 /* ProfileSettingsController.m */,
 				3715AE08152275ED00D2861B /* DollarsView.h */,
@@ -955,7 +963,6 @@
 				37CE5F61150A956A007FB05B /* Giraffe.m in Sources */,
 				37CE5F62150A956A007FB05B /* LoginController.m in Sources */,
 				37CE5F63150A956A007FB05B /* MainScreenController.m in Sources */,
-				37CE5F65150A956A007FB05B /* RotatingWheel.m in Sources */,
 				37FB6F2B151435110012AF79 /* TutorialViewController.m in Sources */,
 				376DA9A3151A56DE009BD121 /* GFNavView.m in Sources */,
 				37AC5A7F15223A3500343E1F /* CreateDateController.m in Sources */,
@@ -971,6 +978,9 @@
 				371A1F5A153DC86100E8598B /* ThemeButton.m in Sources */,
 				376E4C661540FD6800F38BAA /* TimeNameView.m in Sources */,
 				379A04DA154714C800516CB5 /* SearchController.m in Sources */,
+				379A04E91548417700516CB5 /* ProfileHeaderView.m in Sources */,
+				379A04EC1548470C00516CB5 /* ProfileHeaderButton.m in Sources */,
+				379A04EF1548968C00516CB5 /* MyDateCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

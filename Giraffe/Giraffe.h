@@ -8,6 +8,7 @@
 
 #define GFCreatedDate @"GF_CREATE_DATE"
 #define GFChangePic @"CHANGE_PIC"
+#define GFLikeDate @"LIKE_DATE"
 
 #import <CoreLocation/CoreLocation.h>
 #import "GeoLocationHandler.h"

@@ -67,14 +67,4 @@
     self.pageControl.currentPage = roundl(scrollView.contentOffset.x /scrollView.bounds.size.width);
 }
 
-- (void)loginControllerFinish:(LoginController *)loginCntl
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    ((LoginController *)segue.destinationViewController).delegate = self;
-}
-
 @end

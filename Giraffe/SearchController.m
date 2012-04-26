@@ -7,20 +7,26 @@
 //
 
 #import "SearchController.h"
+#import <Parse/Parse.h>
+#import "DateInfoCell.h"
 
 @interface SearchController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSString *searchTerm;
+@property (strong, nonatomic) NSArray *results;
 
 @end
 
 @implementation SearchController
-@synthesize tableView;
+@synthesize tableView, searchTerm, results;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
         self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Search" image:[UIImage imageNamed:@"searchbutton"] tag:3];
+        self.results = [NSArray array];
+        self.searchTerm = @"";
     }
     return self;
 }
@@ -40,12 +46,25 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-     
+    NSString *formattedTerm = [NSString stringWithFormat:@".*%@.*", self.searchTerm];
+    
+    PFQuery *inTags = [PFQuery queryWithClassName:@"Date"];
+    [inTags whereKey:@"themes" matchesRegex:formattedTerm modifiers:@"i"];
+
+    PFQuery *inDescription = [PFQuery queryWithClassName:@"Date"];
+    [inDescription whereKey:@"description" matchesRegex:formattedTerm modifiers:@"i"];
+
+    
+    [[PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects:inTags, inDescription, nil]] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        self.results = objects;
+        [self.tableView reloadData];
+    }];
+    [searchBar resignFirstResponder];
 }
 
-- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    
+    self.searchTerm = searchText;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -60,12 +79,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [self.tableView dequeueReusableCellWithIdentifier:@"SearchResult"];
+    DateInfoCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"SearchResult"];
+    cell.date = [self.results objectAtIndex:indexPath.row];
+    return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return [self.results count];
 }
 
 @end

@@ -33,11 +33,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 - (IBAction)toggleLike:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *likeButton;
 
 @end
 
 @implementation DetailedDateController
 @synthesize tableView;
+@synthesize likeButton;
 @synthesize themeIconView;
 @synthesize costIconView;
 @synthesize imageBorderView;
@@ -65,6 +67,8 @@
 {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dateLiked:) name: GFLikeDate object:self.date];
+    
     PFUser *user = [self.date objectForKey:@"user"];
     [user fetchIfNeeded];
     self.imageBorderView.layer.cornerRadius = 4.0;
@@ -83,7 +87,25 @@
     self.tableView.tableHeaderView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height + sizeDifference);
     
     //Set up the footer (take up remainder of space)
-    self.likedInfoLabel.text = [NSString stringWithFormat: @"%@ Likes", [self.date objectForKey:@"likes"]];
+    
+    PFQuery *numberOfLikes = [PFQuery queryForUser];
+    [numberOfLikes whereKey:@"likes" equalTo:self.date];
+    [numberOfLikes countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+        self.likedInfoLabel.text = [NSString stringWithFormat: @"%d Likes", number];
+    }];
+    
+    self.likeButton.selected = [((NSArray *)[[PFUser currentUser] objectForKey:@"likes"]) containsObject:self.date];
+}
+
+- (void) dateLiked: (NSNotification *) sender
+{
+    PFQuery *numberOfLikes = [PFQuery queryForUser];
+    [numberOfLikes whereKey:@"likes" equalTo:self.date];
+    [numberOfLikes countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+        self.likedInfoLabel.text = [NSString stringWithFormat: @"%d Likes", number];
+    }];
+    
+    self.likeButton.selected = ((NSNumber *)[sender.userInfo objectForKey:@"liked"]).boolValue;
 }
 
 - (void)viewDidUnload
@@ -100,6 +122,7 @@
     [self setThemeIconView:nil];
     [self setLocationLabel:nil];
     [self setTableView:nil];
+    [self setLikeButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -110,22 +133,30 @@
 }
 
 - (IBAction)toggleLike:(UIButton *)sender {
-    if (sender.selected)
-    {
-        [self.date incrementKey:@"likes" byAmount:[NSNumber numberWithInt:-1]];
-    }
-    else
-    {
-        [self.date incrementKey:@"likes"];
-    }
-    [self.date saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        NSInteger numberOfLikes = ((NSNumber *)[self.date objectForKey:@"likes"]).intValue;
+    BOOL likedAlready = [((NSArray *)[[PFUser currentUser] objectForKey:@"likes"]) containsObject:self.date];
 
-        self.likedInfoLabel.text = [NSString stringWithFormat: @"%d Likes", numberOfLikes];
-    }];
-    
-    
-    sender.selected = !sender.selected;
+    if (likedAlready)
+    {
+        NSMutableArray *likes = [NSMutableArray arrayWithArray:[[PFUser currentUser] objectForKey:@"likes"]];
+        [likes removeObject:self.date];
+        [[PFUser currentUser] setObject:likes forKey:@"likes"];
+    }
+    else 
+    {
+        NSArray *likesArray = [[PFUser currentUser] objectForKey:@"likes"];
+        if (likesArray)
+        {
+            likesArray = [likesArray arrayByAddingObject:self.date];
+        }
+        else
+        {
+            likesArray = [NSArray arrayWithObject:self.date];
+        }
+
+        [[PFUser currentUser] setObject:likesArray forKey:@"likes"];
+    }
+    [[PFUser currentUser] saveInBackground];
+    [[NSNotificationCenter defaultCenter] postNotificationName:GFLikeDate object:self.date userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:!likedAlready], @"liked", nil]];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

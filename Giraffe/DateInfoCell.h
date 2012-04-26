@@ -16,6 +16,7 @@
 @property (nonatomic, weak) IBOutlet UIImageView *userImage;
 @property (nonatomic, weak) IBOutlet UIView *imageBorderView;
 @property (nonatomic, weak) IBOutlet TimeNameView *timeName;
+@property (nonatomic, weak) IBOutlet UIButton *likeButton;
 
 - (IBAction)toggleLike:(UIButton *)sender;
 
