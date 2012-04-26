@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UsernameController : UIViewController
+@interface UsernameController : UIViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @end

@@ -14,23 +14,33 @@
 @interface ProfileSettingsController ()
 @property (weak, nonatomic) IBOutlet UIImageView *myPicture;
 @property (weak, nonatomic) IBOutlet UIView *ImageBorderView;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *imageSpinner;
-- (IBAction)logout:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 
 @end
 
 @implementation ProfileSettingsController
 @synthesize myPicture;
 @synthesize ImageBorderView;
-@synthesize imageSpinner;
+@synthesize usernameLabel;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithCoder:aDecoder];
     if (self) {
-        // Custom initialization
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userChange:) name:GFChangePic object:nil];
     }
     return self;
+}
+
+- (void) userChange: (NSNotification *) sender
+{
+    PFFile *currentImage = [[PFUser currentUser] objectForKey:@"image"];
+    
+    [currentImage getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        self.myPicture.image = [UIImage imageWithData:data];
+    }];
+    self.usernameLabel.text = [PFUser currentUser].username;
+
 }
 
 - (void)viewDidLoad
@@ -45,13 +55,14 @@
     {
         self.myPicture.image = [UIImage imageWithData:[currentImage getData]];
     }
+    self.usernameLabel.text = [PFUser currentUser].username;
 }
 
 - (void)viewDidUnload
 {
     [self setMyPicture:nil];
     [self setImageBorderView:nil];
-    [self setImageSpinner:nil];
+    [self setUsernameLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -63,56 +74,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Camera", @"Library", nil];
-    [sheet showInView:[self.tableView cellForRowAtIndexPath:indexPath]];
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    if (buttonIndex == 0)
+    if (indexPath.section == 0)
     {
-        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        UIViewController *tutorial = [[UIStoryboard storyboardWithName:@"Tutorial" bundle:nil] instantiateViewControllerWithIdentifier:@"username"];
+        [self presentViewController:tutorial animated:YES completion:nil];
     }
-    else if(buttonIndex == 1) {
-        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    else if (indexPath.section == 1)
+    {
+        [PFUser logOut];
+        UIViewController *tutorial = [[UIStoryboard storyboardWithName:@"Tutorial" bundle:nil] instantiateInitialViewController];
+        [self presentViewController:tutorial animated:YES completion:nil];
     }
-    else {
-        [self.tableView deselectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES];
-        //cancel
-        return;
-    }
-    picker.delegate = self;
-    [self presentViewController:picker animated:YES completion:nil];
-}
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
-{
-    UIGraphicsBeginImageContextWithOptions(self.myPicture.frame.size, NO, 0.0);
-    [image drawInRect:self.myPicture.frame];
-    self.myPicture.image = UIGraphicsGetImageFromCurrentImageContext();    
-    UIGraphicsEndImageContext();
-    self.myPicture.alpha = 0.0;
-    [self.imageSpinner startAnimating];
-    
-    PFFile *serializedImage = [PFFile fileWithData:UIImagePNGRepresentation(self.myPicture.image)];
-    [serializedImage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        [[PFUser currentUser] setObject:serializedImage forKey:@"image"];
-        [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            self.myPicture.alpha = 1.0;
-            [self.imageSpinner stopAnimating];
-
-            [[NSNotificationCenter defaultCenter] postNotificationName:GFChangePic object:nil];
-        }];
-    }];
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (IBAction)logout:(id)sender
-{
-    [PFUser logOut];
-    UIViewController *tutorial = [[UIStoryboard storyboardWithName:@"Tutorial" bundle:nil] instantiateInitialViewController];
-    [self presentViewController:tutorial animated:NO completion:nil];
 }
 
 @end

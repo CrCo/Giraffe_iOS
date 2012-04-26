@@ -95,6 +95,10 @@
     }];
 
     NSArray *likes = [[PFUser currentUser] objectForKey:@"likes"];
+    if (!likes)
+    {
+        likes = [NSArray array];
+    }
     [queryResults setObject:likes forKey:@"liked"];
     [self.header setNumber:[likes count] forHeader:@"liked"];
     
