@@ -82,7 +82,9 @@
     else if (indexPath.section == 1)
     {
         [PFUser logOut];
-        UIViewController *tutorial = [[UIStoryboard storyboardWithName:@"Tutorial" bundle:nil] instantiateViewControllerWithIdentifier:@"login"];
+        //We need to load the initial view controller because we won't automatically get a nav
+        //controller otherwise (which we use to shuttle the view to set the username)
+        UIViewController *tutorial = [[UIStoryboard storyboardWithName:@"Tutorial" bundle:nil] instantiateInitialViewController];
         [self presentViewController:tutorial animated:YES completion:nil];
     }
 }
