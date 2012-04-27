@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (weak, nonatomic) IBOutlet UILabel *warningLabel;
 @property (weak, nonatomic) IBOutlet UIButton *okButton;
+@property (weak, nonatomic) IBOutlet UILabel *clickPromptLabel;
 
 - (void)selectImage:(id)sender;
 
@@ -31,6 +32,7 @@
 @synthesize spinner;
 @synthesize warningLabel;
 @synthesize okButton;
+@synthesize clickPromptLabel;
 @synthesize prompt;
 @synthesize username;
 
@@ -47,6 +49,8 @@
 {
     [super viewDidLoad];
     
+    self.clickPromptLabel.font = [UIFont fontWithName:@"appetite" size:18];
+    
     [self.username becomeFirstResponder];
         
     [self.currentPicture addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectImage:)]];
@@ -60,6 +64,7 @@
     
     if(pic)
     {
+        self.clickPromptLabel.hidden = YES;
         [self.spinner startAnimating];
     }
     
@@ -79,6 +84,7 @@
     [self setSpinner:nil];
     [self setWarningLabel:nil];
     [self setOkButton:nil];
+    [self setClickPromptLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -127,6 +133,7 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
 {
     [self.spinner startAnimating];
+    self.clickPromptLabel.hidden = YES;
 
     UIGraphicsBeginImageContextWithOptions(self.currentPicture.frame.size, NO, 0.0);
     [image drawInRect:self.currentPicture.frame];

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
-@interface LoginController : UIViewController
+@interface LoginController : UIViewController <PF_FBRequestDelegate>
 
 @end

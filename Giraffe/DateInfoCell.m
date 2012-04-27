@@ -66,14 +66,20 @@
     _date = aDate;
     PFUser * user = [aDate objectForKey:@"user"];
     [user fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-        [self.timeName setName:user.username];
-        PFFile *serializedImage = [user objectForKey:@"image"];
-        if (serializedImage)
+        if (error)
         {
-            NSLog(@"Is the image for %@ already in memory? %d", user.username, serializedImage.isDataAvailable);
-            [serializedImage getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-                self.userImage.image = [UIImage imageWithData:data];
-            }];
+            NSLog(@"Object %@ couldn't be loaded: %@", object, [error localizedDescription]);
+        } 
+        else {
+            [self.timeName setName:user.username];
+            PFFile *serializedImage = [user objectForKey:@"image"];
+            if (serializedImage)
+            {
+                NSLog(@"Is the image for %@ already in memory? %d", user.username, serializedImage.isDataAvailable);
+                [serializedImage getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                    self.userImage.image = [UIImage imageWithData:data];
+                }];
+            }
         }
     }];
     
