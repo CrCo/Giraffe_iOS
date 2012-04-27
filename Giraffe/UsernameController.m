@@ -49,7 +49,7 @@
 {
     [super viewDidLoad];
     
-    self.clickPromptLabel.font = [UIFont fontWithName:@"appetite" size:18];
+    self.clickPromptLabel.font = [UIFont fontWithName:@"appetite" size:12];
     
     [self.username becomeFirstResponder];
         

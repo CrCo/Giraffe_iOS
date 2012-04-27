@@ -92,6 +92,7 @@ CGPoint lastPoint;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[UIImage imageNamed:@"NEWBY+"] forState:UIControlStateNormal];
     button.frame = CGRectMake(0, 0, BUTTON_SIZE, BUTTON_SIZE);
+    [button addTarget:self action:@selector(postNewDate:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     
     

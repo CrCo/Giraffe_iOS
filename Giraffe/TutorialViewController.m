@@ -15,6 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIButton *continueButton;
 
 @end
 
@@ -22,6 +23,7 @@
 
 @synthesize pageControl;
 @synthesize scrollView = _scrollView;
+@synthesize continueButton;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -47,12 +49,19 @@
     }
     
     self.scrollView.contentSize = CGSizeApplyAffineTransform(self.scrollView.bounds.size, CGAffineTransformMakeScale(allImages.count, 1));
+    
+    UIImage *image = [[UIImage imageNamed:@"hotdog"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)];
+    
+    [self.continueButton setBackgroundImage:image  forState:UIControlStateNormal];
+    self.continueButton.titleLabel.font = [UIFont fontWithName:@"appetite" size:16];
+
 }
 
 - (void)viewDidUnload
 {
     [self setPageControl:nil];
     [self setScrollView:nil];
+    [self setContinueButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
