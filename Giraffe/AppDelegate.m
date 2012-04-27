@@ -11,6 +11,7 @@
 #import "Giraffe.h"
 #import "SuperTabBarController.h"
 #import <Parse/Parse.h>
+#import "TestFlight.h"
 
 @implementation AppDelegate
 
@@ -24,6 +25,9 @@
     SuperTabBarController *root = [[SuperTabBarController alloc] init];
     [self.window setRootViewController:root];
 
+    //Add testflight support
+    [TestFlight takeOff:@"a3326b615ece62a74033ad5b1eecb631_ODQwOTAyMDEyLTA0LTI3IDEyOjU4OjQ0Ljc2MTExOQ"];
+    
     [self.window makeKeyAndVisible];
     
     return YES;

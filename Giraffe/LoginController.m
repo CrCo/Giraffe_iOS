@@ -112,7 +112,10 @@
     }];
 }
 
-- (IBAction)facebookLogin:(id)sender {
+- (IBAction)facebookLogin:(UIButton *)sender {
+    //We should set the button to selected so the user is aware of what's going on
+    //while the interface loads
+    sender.selected = YES;
     //Once we are logged in get the username of this person from Facebook.
     [PFFacebookUtils logInWithPermissions:[NSArray array] block:^(PFUser * user, NSError *error)
     {
@@ -139,7 +142,11 @@
     }];
 }
 
-- (IBAction)twitterLogin:(id)sender {
+- (IBAction)twitterLogin:(UIButton *)sender {
+    //We should set the button to selected so the user is aware of what's going on
+    //while the interface loads
+    sender.selected = YES;
+
     [PFTwitterUtils logInWithBlock: ^(PFUser *user, NSError *error) {
         [self shuttleMessage];
         [PFUser currentUser].username = [[PFTwitterUtils twitter] screenName];
