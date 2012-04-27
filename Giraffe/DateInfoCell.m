@@ -18,7 +18,6 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.imageBorderView.layer.cornerRadius = 4.0;
     }
     return self;
 }
@@ -64,6 +63,12 @@
 - (void)setDate:(PFObject *)aDate
 {
     _date = aDate;
+    
+    //The wiring when instantiating the uitableviewcell from a storyboard isn't
+    //done before initWithCoder is called. Thus, we need to do some of the configuration
+    //later
+    self.imageBorderView.layer.cornerRadius = 4.0;
+    
     PFUser * user = [aDate objectForKey:@"user"];
     [user fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         if (error)
