@@ -100,10 +100,25 @@
     if (usernameLength > 3 && usernameLength < 18)
     {
         [PFUser currentUser].username = self.username.text;
-        [[PFUser currentUser] saveInBackground];
-        [[NSNotificationCenter defaultCenter] postNotificationName:GFChangePic object:nil];
+        [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
 
-        [self dismissModalViewControllerAnimated:YES];
+            if (error)
+            {
+                if (error.code == kPFErrorUsernameTaken)
+                {
+                    self.warningLabel.text = @"Username taken";                    
+                }
+                else 
+                {
+                    self.warningLabel.text = @"Unknown error";
+                }
+            }
+            else 
+            {
+                [[NSNotificationCenter defaultCenter] postNotificationName:GFChangePic object:nil];
+                [self dismissModalViewControllerAnimated:YES];
+            }
+        }];
     }
 }
 
