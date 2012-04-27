@@ -38,7 +38,7 @@
 {
     [super viewDidLoad];
     
-    NSArray *allImages = [NSArray arrayWithObjects:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Content1"]], [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Content2"]], [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Content4"]], [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Content5"]], nil];
+    NSArray *allImages = [NSArray arrayWithObjects:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Content1"]], [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Content2"]], [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Content3"]],[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Content4"]], [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Content5"]], nil];
     
     for (int index = 0; index < allImages.count; index++)
     {
