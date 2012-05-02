@@ -70,7 +70,7 @@
                                     <outlet property="delegate" destination="gJH-Zz-5Az" id="AD1-zy-3sQ"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" placeholder="Search" id="rFc-1k-HiA">
+                            <searchBar contentMode="redraw" placeholder="Search" showsCancelButton="YES" id="rFc-1k-HiA">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -104,6 +104,7 @@
                 <relationship kind="action" name="toggleLike:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="description" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="imageBorderView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="likeButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="timeName" candidateClass="TimeNameView"/>
                 <relationship kind="outlet" name="userImage" candidateClass="UIImageView"/>
             </relationships>

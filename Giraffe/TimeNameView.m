@@ -39,7 +39,7 @@
         self.timeLabel.textAlignment = UITextAlignmentRight;
         self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(width, 0, width, height)];
         self.nameLabel.font = _smallFont;
-        self.nameLabel.textColor = [UIColor colorWithRed:0.832 green:0.293 blue:0.031 alpha:1.0];
+        self.nameLabel.textColor = [UIColor colorWithRed:0.988 green:0.69 blue:0.251 alpha:1.0];
         self.nameLabel.backgroundColor = [UIColor clearColor];
         
         [self addSubview:self.timeLabel];

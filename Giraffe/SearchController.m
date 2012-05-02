@@ -89,4 +89,9 @@
     return [self.results count];
 }
 
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+}
+
 @end

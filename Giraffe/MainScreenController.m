@@ -90,7 +90,7 @@ CGPoint lastPoint;
     [[PFUser currentUser] fetchIfNeeded];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setImage:[UIImage imageNamed:@"NEWBY+"] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"AddDateButton"] forState:UIControlStateNormal];
     button.frame = CGRectMake(0, 0, BUTTON_SIZE, BUTTON_SIZE);
     [button addTarget:self action:@selector(postNewDate:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
@@ -105,15 +105,22 @@ CGPoint lastPoint;
 
     UISegmentedControl *control = [[UISegmentedControl alloc] initWithItems:segmentControlTitles];
     
-    NSDictionary *textAttributes = [NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"appetite" size:12], UITextAttributeFont, textColor,UITextAttributeTextColor, shadowColor, UITextAttributeTextShadowColor, UIOffsetMake(0, 1),  UITextAttributeTextShadowOffset, nil];
+    NSDictionary *textAttributes = [NSDictionary dictionaryWithObjectsAndKeys: [UIFont boldSystemFontOfSize:12], UITextAttributeFont, textColor,UITextAttributeTextColor, shadowColor, UITextAttributeTextShadowColor, UIOffsetMake(0, 1),  UITextAttributeTextShadowOffset, nil];
     
     [control setTitleTextAttributes:textAttributes forState:UIControlStateNormal];
+
+    UIImage *image = [[UIImage imageNamed:@"Darkdog"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)];
     
-    UIImage *image = [[UIImage imageNamed:@"hotdog"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)];
+    [control setBackgroundImage:image forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
+    
+    image = [[UIImage imageNamed:@"hotdog"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)];
     
     [control setBackgroundImage:image forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     [control setDividerImage:dividerImage forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     self.navigationItem.titleView = control;
+    
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:nil action:nil];
 }
 
 - (void)viewDidUnload

@@ -211,7 +211,7 @@
                                             <rect key="frame" x="6" y="3" width="41" height="37"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                            <state key="normal" image="repost-lit.png">
+                                            <state key="normal" image="repost.png">
                                                 <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -277,7 +277,7 @@
         <image name="Heart_Liked.png" width="37" height="37"/>
         <image name="Heart_NotLiked.png" width="37" height="37"/>
         <image name="Scroll.png" width="300" height="367"/>
-        <image name="repost-lit.png" width="37" height="37"/>
+        <image name="repost.png" width="37" height="38"/>
     </resources>
     <classes>
         <class className="DateInfoCell" superclassName="UITableViewCell">

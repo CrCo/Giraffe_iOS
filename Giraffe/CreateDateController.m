@@ -91,6 +91,7 @@
     self.localeLabel.text = [NSString stringWithFormat:@"%@, %@", [Giraffe app].location.locality, [Giraffe app].location.administrativeArea];
     
     self.themesScroller.contentSize = CGSizeMake(self.themes.count *themeSize, themeSize);
+    self.themesScroller.contentOffset = CGPointMake(25, 0);
     
     self.themeSideLength = CGRectGetHeight(self.themesPanel.frame);
     self.nextThemeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(-self.themeSideLength - EXTRA_DISTANCE, 0, self.themeSideLength, self.themeSideLength)];

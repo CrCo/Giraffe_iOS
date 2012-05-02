@@ -15,34 +15,30 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="AdddateBackground.png" id="LqL-Bv-Isj">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="adddatebground.png" id="LqL-Bv-Isj">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="adddatescroll.png" id="3wT-WU-W1l">
-                                <rect key="frame" x="10" y="10" width="300" height="440"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Edmonton, AB" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="XHP-5p-og9">
-                                <rect key="frame" x="49" y="128" width="187" height="21"/>
+                                <rect key="frame" x="45" y="177" width="187" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="140" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Viz-2W-rZk">
-                                <rect key="frame" x="263" y="128" width="27" height="21"/>
+                                <rect key="frame" x="263" y="177" width="27" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="DateInputBar.png" id="Sxr-wz-Lop">
-                                <rect key="frame" x="45" y="66" width="243" height="64"/>
+                                <rect key="frame" x="39" y="115" width="243" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="58p-Cu-tNl">
-                                <rect key="frame" x="51" y="71" width="230" height="54"/>
+                                <rect key="frame" x="45" y="120" width="230" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -52,16 +48,16 @@
                                 </connections>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="CostTitle.png" id="bBa-cn-8XV">
-                                <rect key="frame" x="42" y="176" width="41" height="15"/>
+                                <rect key="frame" x="36" y="210" width="41" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" id="p2y-aK-9lS" customClass="DollarsView">
-                                <rect key="frame" x="109" y="170" width="165" height="27"/>
+                                <rect key="frame" x="109" y="204" width="165" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2.5" minValue="0.0" maxValue="5" id="gmu-Qt-dYZ">
-                                <rect key="frame" x="43" y="201" width="233" height="23"/>
+                                <rect key="frame" x="36" y="235" width="248" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="minimumTrackTintColor" red="0.90980398650000005" green="0.72941178080000002" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                                 <color key="maximumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -71,29 +67,29 @@
                                 </connections>
                             </slider>
                             <view contentMode="scaleToFill" id="bfn-wd-hzM">
-                                <rect key="frame" x="115" y="249" width="135" height="16"/>
+                                <rect key="frame" x="115" y="283" width="135" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="ThemeTitle.png" id="VE6-3d-kbQ">
-                                <rect key="frame" x="42" y="249" width="58" height="15"/>
+                                <rect key="frame" x="36" y="283" width="58" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="DateWheel.png" id="n4y-Iw-jq3">
-                                <rect key="frame" x="42" y="278" width="248" height="60"/>
+                                <rect key="frame" x="36" y="312" width="248" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="gSP-ap-FJS">
-                                <rect key="frame" x="42" y="278" width="248" height="60"/>
+                                <rect key="frame" x="36" y="312" width="248" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </scrollView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="DateTitle" id="Ghb-BA-Pq6">
-                                <rect key="frame" x="52" y="43" width="42" height="15"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="DateTitle.png" id="Ghb-BA-Pq6">
+                                <rect key="frame" x="36" y="86" width="42" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MzU-6m-eMx">
-                                <rect key="frame" x="96" y="367" width="45" height="45"/>
+                                <rect key="frame" x="96" y="394" width="45" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="X.png">
@@ -108,7 +104,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="M4G-Il-ZEL">
-                                <rect key="frame" x="179" y="367" width="45" height="45"/>
+                                <rect key="frame" x="179" y="394" width="45" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="checkmark.png">
@@ -122,14 +118,6 @@
                                     <action selector="createObj:" destination="c9J-3b-dq1" eventType="touchUpInside" id="vKi-FM-A5b"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="HangBar.png" id="1kP-UH-Mci">
-                                <rect key="frame" x="0.0" y="27" width="26" height="3"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="HangBar.png" id="qSY-Js-Iyy">
-                                <rect key="frame" x="301" y="27" width="19" height="3"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -157,15 +145,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AdddateBackground.png" width="320" height="460"/>
         <image name="CostTitle.png" width="41" height="15"/>
         <image name="DateInputBar.png" width="243" height="65"/>
-        <image name="DateTitle" width="16" height="16"/>
+        <image name="DateTitle.png" width="42" height="15"/>
         <image name="DateWheel.png" width="248" height="60"/>
-        <image name="HangBar.png" width="1" height="3"/>
         <image name="ThemeTitle.png" width="58" height="15"/>
         <image name="X.png" width="45" height="45"/>
-        <image name="adddatescroll.png" width="300" height="440"/>
+        <image name="adddatebground.png" width="320" height="460"/>
         <image name="checkmark.png" width="45" height="45"/>
     </resources>
     <classes>
